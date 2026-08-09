@@ -918,21 +918,21 @@ function HeroSection({ onStart }: { onStart: () => void }) {
             title: 'نقطه عطف',
             desc: 'زمان، مکان و تغییر را انتخاب کن',
             icon: <Zap className="w-5 h-5" />,
-            color: 'amber',
+            iconClass: 'bg-amber/10 text-amber',
           },
           {
             step: '02',
             title: 'شدت تغییر',
             desc: 'مخفیانه یا عمومی بودن تغییر را تعیین کن',
             icon: <Globe className="w-5 h-5" />,
-            color: 'cyan',
+            iconClass: 'bg-cyan/10 text-cyan',
           },
           {
             step: '03',
             title: 'شبیه‌سازی',
             desc: 'دکمه بزن و خط زمانی جدید را ببین',
             icon: <Play className="w-5 h-5" />,
-            color: 'emerald',
+            iconClass: 'bg-emerald/10 text-emerald',
           },
         ].map((item) => (
           <motion.div
@@ -942,7 +942,7 @@ function HeroSection({ onStart }: { onStart: () => void }) {
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           >
             <span className="text-xs text-muted-foreground/50 font-mono">{item.step}</span>
-            <div className={`inline-flex p-2.5 rounded-lg bg-${item.color}/10 text-${item.color}`}>
+            <div className={`inline-flex p-2.5 rounded-lg ${item.iconClass}`}>
               {item.icon}
             </div>
             <h3 className="font-bold text-sm">{item.title}</h3>

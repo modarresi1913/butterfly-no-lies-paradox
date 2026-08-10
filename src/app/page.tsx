@@ -662,7 +662,7 @@ function CheckpointCard({
                   className="text-xs text-amber/70 hover:text-amber pl-4"
                   onClick={() => setExpanded(true)}
                 >
-                  +{checkpoint.achievements.length - 2} more
+                  +{(checkpoint.achievements || []).length - 2} more
                 </button>
               )}
             </div>
@@ -966,7 +966,7 @@ export default function Home() {
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || 'Simulation failed');
+        throw new Error(`Server error (${res.status}): ${errData.error || 'Unknown'}`);
       }
 
       const data = await res.json();
@@ -979,7 +979,8 @@ export default function Home() {
       }
     } catch (err: any) {
       if (err.name !== 'AbortError') {
-        setError(err.message || 'Unknown error');
+        console.error('Simulation error:', err);
+        setError(err.message || 'Network error — check your connection');
         setStep('ripple');
       }
     }

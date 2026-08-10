@@ -8,34 +8,87 @@ interface SimulationRequest {
   magnitude: 'secret' | 'limited' | 'public';
 }
 
-const SYSTEM_PROMPT = `تو محقق تاریخ جایگزین پلتفرم «The Butterfly Effect» هستی. وظیفه تو این است که بر اساس یک تغییر کوچک در تاریخ، زنجیره علت‌ومعلولی منطقی را تحلیل کنی و خط زمانی جدیدی را تصویر کنی.
+interface Checkpoint {
+  year: string;
+  era_label: string;
+  achievements: string[];
+  crises: string[];
+  world_state: string;
+  geography: string;
+  image_prompt: string;
+}
 
-قواعد اصلی:
-1. تغییرات باید منطقی و علی‌مبتنی باشند (نه خنده‌دار، نه خسته‌کننده)
-2. تقارن تاریخی را رعایت کن (مثلاً اگر کاغذ نبود، ماشین چاپ کار نمی‌کند)
-3. هر 100-200 سال یک ایستگاه بساز
-4. توانایی‌ها و بحران‌ها باید خلاقانه و شگفت‌انگیز باشند
-5. پاسخ حتماً به صورت JSON باشد
+const SYSTEM_PROMPT = `You are the alternative history researcher for "The Butterfly Effect" platform. Your job is to analyze a small change in history and create a logical cause-and-effect timeline.
 
-فرمت JSON مورد نیاز:
+RULES:
+1. Changes must be logical and causal (not ridiculous, not boring)
+2. Maintain historical symmetry (e.g., if paper didn't exist, printing press won't work)
+3. Create one station every 100-200 years
+4. Achievements and crises must be creative and surprising
+5. You MUST respond ONLY with valid JSON - no markdown, no code blocks, no extra text
+
+REQUIRED JSON FORMAT (respond in Persian/Farsi for all text fields EXCEPT image_prompt which must be in English):
 {
   "checkpoints": [
     {
       "year": "1200 BC",
       "era_label": "سال 0 - نقطه عطف",
-      "achievements": ["دستاورد 1", "دستاورد 2"],
-      "crises": ["بحران 1"],
-      "world_state": "توضیح مستقیم وضعیت جهان",
-      "geography": "تغییرات جغرافیایی",
-      "image_prompt": "English prompt for AI image generation of the most important city in this era"
+      "achievements": ["دستاورد 1", "دستاورد 2", "دستاورد 3"],
+      "crises": ["بحران 1", "بحران 2"],
+      "world_state": "توضیح مستقیم وضعیت جهان در این دوره",
+      "geography": "تغییرات جغرافیایی و سیاسی",
+      "image_prompt": "English prompt for AI image generation describing the most important city"
     }
   ]
 }
 
-تعداد checkpoints: حدود 5 ایستگاه (هر 100-200 سال یک توقف) بساز.
-image_prompt حتماً باید به زبان انگلیسی باشد و شامل تفصیلات بصری باشد.
-همه متن‌های فارسی باید روان، داستانی و جذاب باشند.
-فقط خروجی JSON را بده. هیچ متن اضافی قبل و بعد از JSON ننویس.`;
+Create exactly 5 checkpoints spanning 1000 years from the point of divergence.
+image_prompt MUST be in English with rich visual details for image generation.
+All other text MUST be in Persian/Farsi - make it narrative, engaging and vivid.
+RESPOND WITH RAW JSON ONLY. No \`\`\`json markers, no explanations, no extra text.`;
+
+function extractJSON(text: string): string | null {
+  // Try 1: Remove markdown code blocks if present
+  let cleaned = text.trim();
+  const codeBlockMatch = cleaned.match(/```(?:json)?\s*\n?([\s\S]*?)\n?\s*```/);
+  if (codeBlockMatch) {
+    cleaned = codeBlockMatch[1].trim();
+  }
+
+  // Try 2: Direct parse
+  try {
+    JSON.parse(cleaned);
+    return cleaned;
+  } catch {}
+
+  // Try 3: Find first { and last }
+  const firstBrace = cleaned.indexOf('{');
+  const lastBrace = cleaned.lastIndexOf('}');
+  if (firstBrace !== -1 && lastBrace > firstBrace) {
+    const candidate = cleaned.substring(firstBrace, lastBrace + 1);
+    try {
+      JSON.parse(candidate);
+      return candidate;
+    } catch {}
+  }
+
+  // Try 4: Fix common JSON issues (trailing commas, single quotes)
+  let fixed = cleaned;
+  fixed = fixed.replace(/,\s*([}\]])/g, '$1'); // trailing commas
+  fixed = fixed.replace(/'/g, '"'); // single quotes
+  
+  const firstB = fixed.indexOf('{');
+  const lastB = fixed.lastIndexOf('}');
+  if (firstB !== -1 && lastB > firstB) {
+    const candidate = fixed.substring(firstB, lastB + 1);
+    try {
+      JSON.parse(candidate);
+      return candidate;
+    } catch {}
+  }
+
+  return null;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -55,10 +108,11 @@ export async function POST(request: NextRequest) {
 - تغییر: ${change}
 - شدت: ${magnitudeMap[magnitude]}
 
-خط زمانی جدید را از این نقطه عطف شروع کن و حدود 5 ایستگاه 100-200 ساله تا 1000 سال بعد را توصیف کن.`;
+خط زمانی جدید را از این نقطه عطف شروع کن و دقیقاً 5 ایستگاه 100-200 ساله تا 1000 سال بعد را توصیف کن.`;
 
     const zai = await ZAI.create();
 
+    // Step 1: Generate timeline via LLM
     const completion = await zai.chat.completions.create({
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
@@ -76,27 +130,44 @@ export async function POST(request: NextRequest) {
       responseText = completion.output.text;
     }
 
-    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
-      throw new Error('Invalid AI response format');
+    if (!responseText) {
+      throw new Error('هوش مصنوعی پاسخی تولید نکرد. لطفاً دوباره تلاش کنید.');
     }
 
-    const simulationResult = JSON.parse(jsonMatch[0]);
+    // Parse JSON with robust extraction
+    const jsonStr = extractJSON(responseText);
+    if (!jsonStr) {
+      console.error('Failed to parse AI response:', responseText.substring(0, 500));
+      throw new Error('پاسخ هوش مصنوعی قابل پردازش نبود. لطفاً دوباره تلاش کنید.');
+    }
 
+    const simulationResult = JSON.parse(jsonStr);
+
+    if (!simulationResult.checkpoints || !Array.isArray(simulationResult.checkpoints) || simulationResult.checkpoints.length === 0) {
+      throw new Error('فرمت پاسخ نامعتبر بود. لطفاً دوباره تلاش کنید.');
+    }
+
+    // Step 2: Generate image for last checkpoint (non-blocking, with timeout)
     const lastCheckpoint = simulationResult.checkpoints[simulationResult.checkpoints.length - 1];
     let generatedImage: string | null = null;
 
     if (lastCheckpoint?.image_prompt) {
       try {
-        const imageResult = await zai.images.generations.create({
+        const imagePromise = zai.images.generations.create({
           prompt: `Epic cinematic scene, dramatic lighting, ultra detailed, concept art style, historical fantasy: ${lastCheckpoint.image_prompt}. ArtStation quality, 8K resolution, volumetric lighting, epic composition.`,
-          size: '1344x768',
+          size: '1024x576',
         });
-        if (imageResult?.data?.[0]?.base64) {
+        
+        const timeoutPromise = new Promise<null>((resolve) => 
+          setTimeout(() => resolve(null), 30000)
+        );
+        
+        const imageResult = await Promise.race([imagePromise, timeoutPromise]);
+        if (imageResult && imageResult?.data?.[0]?.base64) {
           generatedImage = imageResult.data[0].base64;
         }
       } catch (imageError) {
-        console.error('Image generation failed:', imageError);
+        console.error('Image generation failed (non-critical):', imageError);
       }
     }
 

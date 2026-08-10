@@ -52,3 +52,10 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# Project temp files
+tool-results/
+upload/
+scripts/
+worklog.md
+download/

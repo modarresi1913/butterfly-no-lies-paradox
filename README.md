@@ -22,8 +22,9 @@
   <i>Pick a moment. Change it. Watch 1,000 years unfold.</i>
 </p>
 
-<!-- REPLACE with your actual demo GIF -->
-<img width="700" alt="Demo" src="https://github.com/modarresi1913/the-butterfly-effect/assets/demo.gif" />
+<a href="https://butterfly0.space-z.ai/">
+  <img src="https://img.shields.io/badge/Live_Demo-butterfly0.space--z.ai-f59e0b?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xOCAxM2g2YTggOCAwIDAgMSAwIDE2SDZBOCA4IDAgMCAxIDYgMTNoNiI+PC9wYXRoPjxwYXRoIGQ9Ik0xNSAzaDYiIGRhdGEtbG9ja2VkPSJ0cnVlIj48L3BhdGg+PC9zdmc+&logoColor=black" alt="Live Demo" />
+</a>
 
 </div>
 
@@ -94,7 +95,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open **http://localhost:3000** and start simulating history.
+Open **http://localhost:3000** — or try the live demo at **[butterfly0.space-z.ai](https://butterfly0.space-z.ai/)**
 
 <details>
 <summary><b>⚙️ Production Build</b></summary>

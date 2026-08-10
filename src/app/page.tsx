@@ -652,12 +652,12 @@ function CheckpointCard({
                 <Trophy className="w-3.5 h-3.5" />
                 Achievements
               </div>
-              {checkpoint.achievements.slice(0, expanded ? undefined : 2).map((a, i) => (
+              {(checkpoint.achievements || []).slice(0, expanded ? undefined : 2).map((a: string, i: number) => (
                 <p key={i} className="text-xs text-muted-foreground pl-4">
                   &bull; {a}
                 </p>
               ))}
-              {checkpoint.achievements.length > 2 && !expanded && (
+              {(checkpoint.achievements || []).length > 2 && !expanded && (
                 <button
                   className="text-xs text-amber/70 hover:text-amber pl-4"
                   onClick={() => setExpanded(true)}
@@ -673,17 +673,17 @@ function CheckpointCard({
                 <AlertTriangle className="w-3.5 h-3.5" />
                 Crises
               </div>
-              {checkpoint.crises.slice(0, expanded ? undefined : 2).map((c, i) => (
+              {(checkpoint.crises || []).slice(0, expanded ? undefined : 2).map((c: string, i: number) => (
                 <p key={i} className="text-xs text-muted-foreground pl-4">
                   &bull; {c}
                 </p>
               ))}
-              {checkpoint.crises.length > 2 && !expanded && (
+              {(checkpoint.crises || []).length > 2 && !expanded && (
                 <button
                   className="text-xs text-amber/70 hover:text-amber pl-4"
                   onClick={() => setExpanded(true)}
                 >
-                  +{checkpoint.crises.length - 2} more
+                  +{(checkpoint.crises || []).length - 2} more
                 </button>
               )}
             </div>

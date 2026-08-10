@@ -186,6 +186,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Normalize: ensure every checkpoint has all required fields
+    checkpoints = checkpoints.map((cp: any) => ({
+      year: cp.year || 'Unknown',
+      era_label: cp.era_label || 'Unknown Era',
+      achievements: Array.isArray(cp.achievements) ? cp.achievements : [],
+      crises: Array.isArray(cp.crises) ? cp.crises : [],
+      world_state: cp.world_state || 'The world changed in ways we cannot fully describe.',
+      geography: cp.geography || '',
+      image_prompt: cp.image_prompt || '',
+    }));
+
     return NextResponse.json({ success: true, checkpoints, featured_image: generatedImage });
   } catch (error: any) {
     console.error('Simulation error:', error);

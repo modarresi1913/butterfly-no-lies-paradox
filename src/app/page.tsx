@@ -162,19 +162,19 @@ function ButterflyIcon({ className = '' }: { className?: string }) {
 }
 
 // ─── Background Particles ──────────────────────────────
-function ParticleField() {
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    delay: Math.random() * 5,
-    duration: Math.random() * 10 + 10,
-  }));
+const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
+  id: i,
+  x: ((i * 37 + 13) % 97) * 1.03,
+  y: ((i * 53 + 7) % 89) * 1.12,
+  size: ((i * 17 + 3) % 3) + 1,
+  delay: ((i * 23 + 11) % 50) * 0.1,
+  duration: ((i * 19 + 5) % 10) + 10,
+}));
 
+function ParticleField() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {particles.map((p) => (
+      {PARTICLES.map((p) => (
         <motion.div
           key={p.id}
           className="absolute rounded-full bg-amber/20"

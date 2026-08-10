@@ -6,7 +6,7 @@ import {
   Zap,
   Globe,
   Clock,
-  ChevronLeft,
+  ChevronRight,
   Play,
   Loader2,
   Trophy,
@@ -23,7 +23,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
 
 // ─── Types ─────────────────────────────────────────────
 type Magnitude = 'secret' | 'limited' | 'public';
@@ -42,51 +41,42 @@ interface Checkpoint {
 // ─── Pre-built Scenarios ────────────────────────────────
 const SCENARIOS = [
   {
-    era: '۵۰۰ پیش از میلاد',
-    location: 'ایران باستان - تخت جمشید',
-    change: 'اختراع ماشین چاپ توسط کوروش کبیر',
+    era: '500 BC',
+    location: 'Ancient Iran - Persepolis',
+    change: 'Invention of the printing press by Cyrus the Great',
     magnitude: 'public' as Magnitude,
   },
   {
-    era: '۱۲۰۰ پیش از میلاد',
-    location: 'مصر باستان - قاهره',
-    change: 'اختراع باتری و لامپ‌های ابتدایی',
+    era: '1200 BC',
+    location: 'Ancient Egypt - Cairo',
+    change: 'Invention of the battery and early electric lamps',
     magnitude: 'limited' as Magnitude,
   },
   {
-    era: '۳۳۰ پیش از میلاد',
-    location: 'یونان باستان - آتن',
-    change: 'اکتشاف اتم و انرژی هسته‌ای توسط ارسطو',
+    era: '330 BC',
+    location: 'Ancient Greece - Athens',
+    change: 'Discovery of atomic energy by Aristotle',
     magnitude: 'secret' as Magnitude,
   },
 ];
 
 const ERA_SUGGESTIONS = [
-  '۳۰۰۰ پیش از میلاد',
-  '۲۵۰۰ پیش از میلاد',
-  '۱۲۰۰ پیش از میلاد',
-  '۸۰۰ پیش از میلاد',
-  '۵۰۰ پیش از میلاد',
-  '۳۳۰ پیش از میلاد',
-  '۱۰۰ پیش از میلاد',
-  '۱۰۰ میلادی',
-  '۵۰۰ میلادی',
-  '۸۰۰ میلادی',
-  '۱۲۰۰ میلادی',
-  '۱۵۰۰ میلادی',
+  '3000 BC', '2500 BC', '1200 BC', '800 BC',
+  '500 BC', '330 BC', '100 BC',
+  '100 AD', '500 AD', '800 AD', '1200 AD', '1500 AD',
 ];
 
 const LOCATION_SUGGESTIONS = [
-  'ایران باستان - تخت جمشید',
-  'مصر باستان - قاهره',
-  'یونان باستان - آتن',
-  'روم باستان',
-  'چین باستان - پکن',
-  'هند باستان',
-  'بین‌النهرین - بابل',
-  'امپراتوری عثمانی - استانبول',
-  'اروپای قرون وسطی',
-  'ژاپن باستان - کیوتو',
+  'Ancient Iran - Persepolis',
+  'Ancient Egypt - Cairo',
+  'Ancient Greece - Athens',
+  'Ancient Rome',
+  'Ancient China - Beijing',
+  'Ancient India',
+  'Mesopotamia - Babylon',
+  'Ottoman Empire - Istanbul',
+  'Medieval Europe',
+  'Ancient Japan - Kyoto',
 ];
 
 const MAGNITUDE_OPTIONS: {
@@ -97,26 +87,26 @@ const MAGNITUDE_OPTIONS: {
 }[] = [
   {
     value: 'secret',
-    label: 'مخفیانه',
-    description: 'فقط یک گروه کوچک از تغییر آگاه است',
+    label: 'Secret',
+    description: 'Only a small group knows about the change',
     icon: <Lock className="w-5 h-5" />,
   },
   {
     value: 'limited',
-    label: 'محدود',
-    description: 'در اختیار الیت و حاکمان',
+    label: 'Limited',
+    description: 'Available to elites and rulers only',
     icon: <Eye className="w-5 h-5" />,
   },
   {
     value: 'public',
-    label: 'عمومی',
-    description: 'تمام مردم به آن دسترسی دارند',
+    label: 'Public',
+    description: 'Everyone has access to the change',
     icon: <Users className="w-5 h-5" />,
   },
 ];
 
 // ─── Butterfly SVG Component ───────────────────────────
-function ButterflyIcon({ className = '' }: { className?: string }) {
+function ButterflyIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -151,7 +141,8 @@ function ButterflyIcon({ className = '' }: { className?: string }) {
         strokeWidth="1.5"
         fill="currentColor"
         fillOpacity="0.1"
-      />\n      <line
+      />
+      <line
         x1="50" y1="15"
         x2="50" y2="90"
         stroke="currentColor"
@@ -196,7 +187,6 @@ function ParticleField() {
           }}
         />
       ))}
-      {/* Gradient orbs */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-amber/5 rounded-full blur-3xl animate-pulse-glow" />
       <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-cyan/5 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
     </div>
@@ -206,9 +196,9 @@ function ParticleField() {
 // ─── Step Indicator ────────────────────────────────────
 function StepIndicator({ currentStep }: { currentStep: Step }) {
   const steps = [
-    { key: 'ripple' as Step, label: 'نقطه عطف', icon: <Zap className="w-4 h-4" /> },
-    { key: 'magnitude' as Step, label: 'شدت', icon: <Globe className="w-4 h-4" /> },
-    { key: 'simulate' as Step, label: 'شبیه‌سازی', icon: <Play className="w-4 h-4" /> },
+    { key: 'ripple' as Step, label: 'The Ripple', icon: <Zap className="w-4 h-4" /> },
+    { key: 'magnitude' as Step, label: 'Magnitude', icon: <Globe className="w-4 h-4" /> },
+    { key: 'simulate' as Step, label: 'Simulate', icon: <Play className="w-4 h-4" /> },
   ];
 
   const currentIndex = steps.findIndex((s) => s.key === currentStep);
@@ -221,29 +211,21 @@ function StepIndicator({ currentStep }: { currentStep: Step }) {
         return (
           <div key={step.key} className="flex items-center gap-2 md:gap-4">
             <motion.div
-              className={`flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full border transition-colors ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 isActive
-                  ? 'border-amber/50 bg-amber/10 text-amber'
+                  ? 'bg-amber/15 text-amber border border-amber/30'
                   : isDone
-                  ? 'border-emerald/50 bg-emerald/10 text-emerald'
-                  : 'border-border/50 bg-card/50 text-muted-foreground'
+                  ? 'bg-emerald/10 text-emerald border border-emerald/30'
+                  : 'bg-secondary/50 text-muted-foreground border border-border/30'
               }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              animate={isActive ? { scale: [1, 1.03, 1] } : {}}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              {isDone ? (
-                <Trophy className="w-4 h-4" />
-              ) : (
-                step.icon
-              )}
-              <span className="text-xs md:text-sm font-medium">{step.label}</span>
+              {isDone ? <Sparkles className="w-3.5 h-3.5" /> : step.icon}
+              <span className="hidden sm:inline">{step.label}</span>
             </motion.div>
             {i < steps.length - 1 && (
-              <div
-                className={`w-8 md:w-16 h-px transition-colors ${
-                  isDone ? 'bg-emerald/50' : 'bg-border/50'
-                }`}
-              />
+              <div className={`w-8 md:w-16 h-px ${isDone ? 'bg-emerald/40' : 'bg-border/30'}`} />
             )}
           </div>
         );
@@ -280,24 +262,28 @@ function RippleStep({
           transition={{ duration: 2, repeat: Infinity }}
         >
           <Zap className="w-3.5 h-3.5" />
-          مرحله اول
+          Step 1 of 3
         </motion.div>
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          نقطه عطف تاریخ را انتخاب کن
+          Choose Your Turning Point
         </h2>
         <p className="text-muted-foreground text-sm md:text-base">
-          یک زمان، مکان و تغییر کوچک انتخاب کن تا موج آشوب شروع شود
+          Pick a time, place, and a small change to set chaos in motion
         </p>
       </div>
 
       {/* Quick Scenarios */}
       <div className="space-y-2">
-        <p className="text-xs text-muted-foreground px-1">سناریوهای پیشنهادی:</p>
+        <p className="text-xs text-muted-foreground px-1">Suggested scenarios:</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {SCENARIOS.map((s, i) => (
             <motion.button
               key={i}
-              className="text-right p-3 rounded-lg border border-border/50 bg-card/50 hover:border-amber/40 hover:bg-amber/5 transition-all group"
+              className={`text-right p-3 rounded-lg border text-left transition-all ${
+                data.era === s.era && data.location === s.location
+                  ? 'border-amber/50 bg-amber/10'
+                  : 'border-border/50 bg-card/30 hover:border-amber/30'
+              }`}
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
@@ -306,9 +292,7 @@ function RippleStep({
                 onChange('change', s.change);
               }}
             >
-              <p className="text-sm font-medium text-amber/80 group-hover:text-amber transition-colors">
-                {s.change}
-              </p>
+              <p className="text-xs font-medium truncate">{s.change}</p>
               <p className="text-xs text-muted-foreground mt-1">
                 {s.era} &bull; {s.location}
               </p>
@@ -317,108 +301,98 @@ function RippleStep({
         </div>
       </div>
 
-      {/* Custom Input */}
-      <Card className="glass-card">
+      <Card className="bg-card/50 border-border/50">
         <CardContent className="p-4 md:p-6 space-y-4">
           {/* Era */}
-          <div className="space-y-2 relative">
+          <div className="space-y-1.5">
             <label className="text-sm font-medium flex items-center gap-2">
               <Clock className="w-4 h-4 text-amber" />
-              زمان (دوره تاریخی)
+              Time Period
             </label>
-            <Input
-              value={data.era}
-              onChange={(e) => onChange('era', e.target.value)}
-              onFocus={() => setShowSuggestions('era')}
-              onBlur={() => setTimeout(() => setShowSuggestions(null), 200)}
-              placeholder="مثلاً: ۵۰۰ پیش از میلاد"
-              className="text-right"
-            />
-            <AnimatePresence>
+            <div className="relative">
+              <Input
+                value={data.era}
+                onChange={(e) => onChange('era', e.target.value)}
+                onFocus={() => setShowSuggestions('era')}
+                onBlur={() => setTimeout(() => setShowSuggestions(null), 200)}
+                placeholder="e.g., 500 BC"
+                className="text-left"
+              />
               {showSuggestions === 'era' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  className="absolute top-full left-0 right-0 z-10 mt-1 rounded-lg border border-border/50 bg-card backdrop-blur-md shadow-xl overflow-hidden"
-                >
-                  {ERA_SUGGESTIONS.filter((s) =>
-                    s.includes(data.era) && data.era.length > 0
-                  ).map((s) => (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 max-h-40 overflow-y-auto">
+                  {ERA_SUGGESTIONS.filter((e) =>
+                    !data.era || e.toLowerCase().includes(data.era.toLowerCase())
+                  ).map((e) => (
                     <button
-                      key={s}
-                      className="w-full text-right px-3 py-2 text-sm hover:bg-amber/10 hover:text-amber transition-colors"
-                      onMouseDown={() => onChange('era', s)}
+                      key={e}
+                      className="w-full text-left px-3 py-2 text-sm hover:bg-accent transition-colors"
+                      onMouseDown={() => { onChange('era', e); setShowSuggestions(null); }}
                     >
-                      {s}
+                      {e}
                     </button>
                   ))}
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
+            </div>
           </div>
 
           {/* Location */}
-          <div className="space-y-2 relative">
+          <div className="space-y-1.5">
             <label className="text-sm font-medium flex items-center gap-2">
               <Globe className="w-4 h-4 text-cyan" />
-              مکان
+              Location
             </label>
-            <Input
-              value={data.location}
-              onChange={(e) => onChange('location', e.target.value)}
-              onFocus={() => setShowSuggestions('location')}
-              onBlur={() => setTimeout(() => setShowSuggestions(null), 200)}
-              placeholder="مثلاً: ایران باستان - تخت جمشید"
-              className="text-right"
-            />\n            <AnimatePresence>
+            <div className="relative">
+              <Input
+                value={data.location}
+                onChange={(e) => onChange('location', e.target.value)}
+                onFocus={() => setShowSuggestions('location')}
+                onBlur={() => setTimeout(() => setShowSuggestions(null), 200)}
+                placeholder="e.g., Ancient Rome"
+                className="text-left"
+              />
               {showSuggestions === 'location' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  className="absolute top-full left-0 right-0 z-10 mt-1 rounded-lg border border-border/50 bg-card backdrop-blur-md shadow-xl overflow-hidden"
-                >
-                  {LOCATION_SUGGESTIONS.filter((s) =>
-                    s.includes(data.location) && data.location.length > 0
-                  ).map((s) => (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 max-h-40 overflow-y-auto">
+                  {LOCATION_SUGGESTIONS.filter((l) =>
+                    !data.location || l.toLowerCase().includes(data.location.toLowerCase())
+                  ).map((l) => (
                     <button
-                      key={s}
-                      className="w-full text-right px-3 py-2 text-sm hover:bg-cyan/10 hover:text-cyan transition-colors"
-                      onMouseDown={() => onChange('location', s)}
+                      key={l}
+                      className="w-full text-left px-3 py-2 text-sm hover:bg-accent transition-colors"
+                      onMouseDown={() => { onChange('location', l); setShowSuggestions(null); }}
                     >
-                      {s}
+                      {l}
                     </button>
                   ))}
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
+            </div>
           </div>
 
           {/* Change */}
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <label className="text-sm font-medium flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-emerald" />
-              تغییر (تغییر کوچکی که تاریخ را متحول می‌کند)
+              The Change (the small ripple that transforms history)
             </label>
             <Textarea
               value={data.change}
               onChange={(e) => onChange('change', e.target.value)}
-              placeholder="مثلاً: اختراع ماشین چاپ توسط کوروش کبیر"
-              className="text-right min-h-[80px]"
+              placeholder="e.g., Invention of the printing press by Cyrus the Great"
+              className="text-left min-h-[80px]"
             />
           </div>
         </CardContent>
       </Card>
 
-      <div className="flex justify-start">
+      <div className="flex justify-end">
         <Button
           onClick={onNext}
           disabled={!isValid}
           className="bg-amber hover:bg-amber-dark text-black font-medium px-6 gap-2"
         >
-          مرحله بعد
-          <ChevronLeft className="w-4 h-4" />
+          Next Step
+          <ChevronRight className="w-4 h-4" />
         </Button>
       </div>
     </motion.div>
@@ -451,13 +425,13 @@ function MagnitudeStep({
           transition={{ duration: 2, repeat: Infinity }}
         >
           <Globe className="w-3.5 h-3.5" />
-          مرحله دوم
+          Step 2 of 3
         </motion.div>
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          شدت تغییر چقدر است؟
+          How Big Is the Ripple?
         </h2>
         <p className="text-muted-foreground text-sm md:text-base">
-          تعیین کن این تغییر چقدر مخفیانه یا عمومی بوده
+          How secret or public was this change?
         </p>
       </div>
 
@@ -504,13 +478,13 @@ function MagnitudeStep({
           className="gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
-          مرحله قبل
+          Back
         </Button>
         <Button
           onClick={onNext}
           className="bg-amber hover:bg-amber-dark text-black font-medium px-6 gap-2"
         >
-          شبیه‌سازی کن!
+          Simulate!
           <Play className="w-4 h-4" />
         </Button>
       </div>
@@ -521,18 +495,18 @@ function MagnitudeStep({
 // ─── Simulation Loading ────────────────────────────────
 function SimulationLoading() {
   const messages = [
-    'در حال تحلیل تاریخ...',
-    'محاسبه زنجیره علت‌ومعلول...',
-    'ساخت خط زمانی جایگزین...',
-    'رندر تصاویر...',
+    'Analyzing history...',
+    'Calculating cause & effect chains...',
+    'Building alternate timeline...',
+    'Rendering visions...',
   ];
   const [msgIndex, setMsgIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const id = setInterval(() => {
       setMsgIndex((prev) => (prev + 1) % messages.length);
     }, 2500);
-    return () => clearInterval(interval);
+    return () => clearInterval(id);
   }, []);
 
   return (
@@ -542,7 +516,6 @@ function SimulationLoading() {
       className="w-full max-w-md mx-auto text-center space-y-6 py-20"
     >
       <div className="relative w-32 h-32 mx-auto">
-        {/* Ripple rings */}
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
@@ -559,7 +532,6 @@ function SimulationLoading() {
             }}
           />
         ))}
-        {/* Butterfly */}
         <motion.div
           className="relative z-10 w-full h-full flex items-center justify-center text-amber"
           animate={{ rotate: [0, 5, -5, 0] }}
@@ -659,7 +631,7 @@ function CheckpointCard({
             </div>
             {isBranchPoint && (
               <Badge className="bg-amber/20 text-amber border-amber/30">
-                نقطه انشعاب
+                Branch Point
               </Badge>
             )}
           </div>
@@ -667,32 +639,30 @@ function CheckpointCard({
 
         {/* Body */}
         <div className="p-4 space-y-3">
-          {/* World State */}
           <div>
             <p className="text-sm leading-relaxed text-foreground/90">
               {checkpoint.world_state}
             </p>
           </div>
 
-          {/* Achievements & Crises Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {/* Achievements */}
             <div className="space-y-1.5">
               <div className="flex items-center gap-1.5 text-emerald text-xs font-medium">
                 <Trophy className="w-3.5 h-3.5" />
-                دستاوردها
+                Achievements
               </div>
               {checkpoint.achievements.slice(0, expanded ? undefined : 2).map((a, i) => (
-                <p key={i} className="text-xs text-muted-foreground pr-4">
+                <p key={i} className="text-xs text-muted-foreground pl-4">
                   &bull; {a}
                 </p>
               ))}
               {checkpoint.achievements.length > 2 && !expanded && (
                 <button
-                  className="text-xs text-amber/70 hover:text-amber pr-4"
+                  className="text-xs text-amber/70 hover:text-amber pl-4"
                   onClick={() => setExpanded(true)}
                 >
-                  +{checkpoint.achievements.length - 2} مورد دیگر
+                  +{checkpoint.achievements.length - 2} more
                 </button>
               )}
             </div>
@@ -701,19 +671,19 @@ function CheckpointCard({
             <div className="space-y-1.5">
               <div className="flex items-center gap-1.5 text-rose text-xs font-medium">
                 <AlertTriangle className="w-3.5 h-3.5" />
-                بحران‌ها
+                Crises
               </div>
               {checkpoint.crises.slice(0, expanded ? undefined : 2).map((c, i) => (
-                <p key={i} className="text-xs text-muted-foreground pr-4">
+                <p key={i} className="text-xs text-muted-foreground pl-4">
                   &bull; {c}
                 </p>
               ))}
               {checkpoint.crises.length > 2 && !expanded && (
                 <button
-                  className="text-xs text-amber/70 hover:text-amber pr-4"
+                  className="text-xs text-amber/70 hover:text-amber pl-4"
                   onClick={() => setExpanded(true)}
                 >
-                  +{checkpoint.crises.length - 2} مورد دیگر
+                  +{checkpoint.crises.length - 2} more
                 </button>
               )}
             </div>
@@ -761,10 +731,10 @@ function ResultsView({
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/30 bg-emerald/10 text-emerald text-sm mb-4"
         >
           <Sparkles className="w-3.5 h-3.5" />
-          شبیه‌سازی کامل شد
+          Simulation Complete
         </motion.div>
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          خط زمانی جدید
+          New Timeline
         </h2>
         <p className="text-muted-foreground text-sm">
           {inputData.change} &mdash; {inputData.era} &mdash; {inputData.location}
@@ -781,9 +751,9 @@ function ResultsView({
           <div className="flex-1">
             <div className="h-px bg-gradient-to-r from-emerald via-cyan to-amber" />
           </div>
-          <div className="text-xs text-muted-foreground">تاریخ اصلی</div>
-          <ChevronLeft className="w-4 h-4 text-amber" />
-          <div className="text-xs text-amber font-medium">تاریخ جایگزین</div>
+          <div className="text-xs text-muted-foreground">Original</div>
+          <ChevronRight className="w-4 h-4 text-amber" />
+          <div className="text-xs text-amber font-medium">Alternate</div>
           <div className="w-3 h-3 rounded-full bg-amber" />
         </div>
       </div>
@@ -798,12 +768,12 @@ function ResultsView({
           >
             <img
               src={`data:image/png;base64,${featuredImage}`}
-              alt="تصویر رندر شده از جهان جایگزین"
+              alt="AI-rendered vision of the alternate world"
               className="w-full h-auto"
             />
             <div className="p-3 bg-card/80 text-center">
               <p className="text-xs text-muted-foreground">
-                تصویر رندر شده توسط هوش مصنوعی از مهم‌ترین شهر در خط زمانی جدید
+                AI-rendered vision of the most important city in the new timeline
               </p>
             </div>
           </motion.div>
@@ -811,7 +781,7 @@ function ResultsView({
       </AnimatePresence>
 
       {/* Timeline Checkpoints */}
-      <div className="space-y-0 custom-scrollbar max-h-[70vh] overflow-y-auto pr-2 pl-2 pb-8">
+      <div className="space-y-0 custom-scrollbar max-h-[70vh] overflow-y-auto px-2 pb-8">
         {checkpoints.map((cp, i) => (
           <CheckpointCard
             key={i}
@@ -831,7 +801,7 @@ function ResultsView({
           className="gap-2 border-amber/30 hover:bg-amber/10 hover:text-amber"
         >
           <RotateCcw className="w-4 h-4" />
-          شبیه‌سازی جدید
+          New Simulation
         </Button>
       </div>
     </motion.div>
@@ -847,7 +817,6 @@ function HeroSection({ onStart }: { onStart: () => void }) {
       exit={{ opacity: 0, y: -30 }}
       className="w-full max-w-3xl mx-auto text-center space-y-8 py-8 md:py-16"
     >
-      {/* Butterfly Animation */}
       <motion.div
         className="relative w-28 h-28 md:w-36 md:h-36 mx-auto text-amber"
         animate={{ y: [0, -8, 0] }}
@@ -867,21 +836,19 @@ function HeroSection({ onStart }: { onStart: () => void }) {
         />
       </motion.div>
 
-      {/* Title */}
       <div className="space-y-3">
         <h1 className="text-4xl md:text-6xl font-black tracking-tight">
           <span className="text-amber">The Butterfly</span>{' '}
           <span className="text-foreground">Effect</span>
         </h1>
         <p className="text-base md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed">
-          یک پروانه در مصر باستان بال می‌زند و هزار سال بعد، امپراتوری روم با سفینه‌های فضایی به کره ماه سفر می‌کند.
+          A butterfly flaps its wings in ancient Egypt, and a thousand years later, the Roman Empire reaches the moon with starships.
         </p>
         <p className="text-sm text-muted-foreground/60">
-          آزمایشگاه فکری تعاملی &mdash; نظریه آشوب &times; تاریخ جایگزین &times; هوش مصنوعی
+          Interactive Thought Lab &mdash; Chaos Theory &times; Alternate History &times; AI
         </p>
       </div>
 
-      {/* CTA */}
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-3"
         whileHover={{ scale: 1.02 }}
@@ -893,44 +860,42 @@ function HeroSection({ onStart }: { onStart: () => void }) {
           className="bg-amber hover:bg-amber-dark text-black font-bold px-8 py-6 text-base gap-2 shadow-lg shadow-amber/20 hover:shadow-amber/40 transition-shadow"
         >
           <Play className="w-5 h-5" />
-          شروع شبیه‌سازی
+          Start Simulation
         </Button>
       </motion.div>
 
-      {/* Feature badges */}
       <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
         <Badge variant="outline" className="border-border/50 text-muted-foreground gap-1.5 px-3 py-1">
-          <Zap className="w-3 h-3 text-amber" /> سه مرحله ساده
+          <Zap className="w-3 h-3 text-amber" /> 3 Simple Steps
         </Badge>
         <Badge variant="outline" className="border-border/50 text-muted-foreground gap-1.5 px-3 py-1">
-          <Sparkles className="w-3 h-3 text-cyan" /> هوش مصنوعی پیشرفته
+          <Sparkles className="w-3 h-3 text-cyan" /> Advanced AI
         </Badge>
         <Badge variant="outline" className="border-border/50 text-muted-foreground gap-1.5 px-3 py-1">
-          <Globe className="w-3 h-3 text-emerald" /> خط زمانی پویا
+          <Globe className="w-3 h-3 text-emerald" /> Dynamic Timeline
         </Badge>
       </div>
 
-      {/* How it works */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 text-right">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
         {[
           {
             step: '01',
-            title: 'نقطه عطف',
-            desc: 'زمان، مکان و تغییر را انتخاب کن',
+            title: 'The Ripple',
+            desc: 'Choose a time, place, and change',
             icon: <Zap className="w-5 h-5" />,
             iconClass: 'bg-amber/10 text-amber',
           },
           {
             step: '02',
-            title: 'شدت تغییر',
-            desc: 'مخفیانه یا عمومی بودن تغییر را تعیین کن',
+            title: 'Magnitude',
+            desc: 'Set how secret or public the change was',
             icon: <Globe className="w-5 h-5" />,
             iconClass: 'bg-cyan/10 text-cyan',
           },
           {
             step: '03',
-            title: 'شبیه‌سازی',
-            desc: 'دکمه بزن و خط زمانی جدید را ببین',
+            title: 'Simulate',
+            desc: 'Hit the button and watch history unfold',
             icon: <Play className="w-5 h-5" />,
             iconClass: 'bg-emerald/10 text-emerald',
           },
@@ -1001,7 +966,7 @@ export default function Home() {
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || 'خطایی در شبیه‌سازی رخ داد');
+        throw new Error(errData.error || 'Simulation failed');
       }
 
       const data = await res.json();
@@ -1010,11 +975,11 @@ export default function Home() {
         setFeaturedImage(data.featured_image || null);
         setStep('results');
       } else {
-        throw new Error(data.error || 'پاسخ نامعتبر از سرور');
+        throw new Error(data.error || 'Invalid server response');
       }
     } catch (err: any) {
       if (err.name !== 'AbortError') {
-        setError(err.message || 'خطای ناشناخته');
+        setError(err.message || 'Unknown error');
         setStep('ripple');
       }
     }
@@ -1024,7 +989,6 @@ export default function Home() {
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       <ParticleField />
 
-      {/* Header */}
       <header className="relative z-10 border-b border-border/30 bg-background/50 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -1041,13 +1005,12 @@ export default function Home() {
               className="text-muted-foreground hover:text-foreground gap-1.5 text-xs"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              شروع مجدد
+              Reset
             </Button>
           )}
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="relative z-10 flex-1 px-4 py-6 md:py-10">
         {step !== 'idle' && step !== 'simulate' && step !== 'results' && (
           <StepIndicator currentStep={step} />
@@ -1096,11 +1059,10 @@ export default function Home() {
         </AnimatePresence>
       </main>
 
-      {/* Footer */}
       <footer className="relative z-10 border-t border-border/20 bg-background/50 backdrop-blur-md mt-auto">
         <div className="max-w-6xl mx-auto px-4 py-3 text-center">
           <p className="text-xs text-muted-foreground/50">
-            The Butterfly Effect &mdash; آزمایشگاه فکری تعاملی &mdash; ساخته شده با هوش مصنوعی
+            The Butterfly Effect &mdash; Interactive Thought Lab &mdash; Powered by AI
           </p>
         </div>
       </footer>

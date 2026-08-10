@@ -8,40 +8,35 @@ interface SimulationRequest {
   magnitude: 'secret' | 'limited' | 'public';
 }
 
-const SYSTEM_PROMPT = `You are an alternative history AI. Create 4 timeline checkpoints spanning 800 years after a historical change.
+const SYSTEM_PROMPT = `You are an alternative history AI for "The Butterfly Effect". Create 4 timeline checkpoints spanning 800 years after a historical divergence.
 
-CRITICAL: Keep responses EXTREMELY SHORT. Max 8 words per field, max 2 items per array.
-image_prompt: max 15 English words.
-All text in Persian except image_prompt (English).
-Output ONLY raw JSON. No markdown. No explanation.
+CRITICAL RULES:
+- Keep ALL text EXTREMELY SHORT: max 10 words per field, max 3 items per array
+- world_state: 1 sentence max
+- geography: 1 sentence max
+- image_prompt: max 15 English words, rich visual details
+- Output ONLY raw valid JSON. No markdown. No explanation. No trailing commas.
 
 FORMAT:
-{"checkpoints":[{"year":"500 BC","era_label":"short title","achievements":["item1"],"crises":["item1"],"world_state":"one short sentence","geography":"one short sentence","image_prompt":"English visual description"}]}
+{"checkpoints":[{"year":"500 BC","era_label":"The Printing Dawn","achievements":["Invention of printing","Mass book production"],"crises":["Resistance from priests"],"world_state":"Persia became the knowledge center of the world.","geography":"The Achaemenid Empire expanded rapidly.","image_prompt":"Ancient Persian library with printing presses, golden hour, cinematic"}]}
 
-Exactly 4 checkpoints.`;
+Exactly 4 checkpoints, each 200 years apart.`;
 
 function repairTruncatedJSON(text: string): any | null {
   let cleaned = text.trim();
 
-  // Remove markdown code blocks
-  const cb = cleaned.match(/\x60\x60\x60(?:json)?\s*\n?([\s\S]*?)\n?\s*\x60\x60\x60/);
+  const cb = cleaned.match(/```(?:json)?\s*\n?([\s\S]*?)\n?\s*```/);
   if (cb) cleaned = cb[1].trim();
 
-  // Find JSON boundaries
   const start = cleaned.indexOf('{');
   if (start === -1) return null;
-
   let json = cleaned.substring(start);
 
-  // Try direct parse first
   try { return JSON.parse(json); } catch {}
-
-  // Fix trailing commas
   json = json.replace(/,\s*([\]\}])/g, '$1');
   try { return JSON.parse(json); } catch {}
 
-  // JSON is likely truncated - repair it
-  // Step 1: Close any unclosed strings
+  // Repair truncated JSON
   let inString = false;
   let escaped = false;
   let lastQuoteIdx = -1;
@@ -49,50 +44,30 @@ function repairTruncatedJSON(text: string): any | null {
     const ch = json[i];
     if (escaped) { escaped = false; continue; }
     if (ch === '\\') { escaped = true; continue; }
-    if (ch === '"') {
-      inString = !inString;
-      lastQuoteIdx = i;
-    }
+    if (ch === '"') { inString = !inString; lastQuoteIdx = i; }
   }
-  
-  // If we're inside a string, close it
+
   let repaired = json;
   if (inString) {
-    // Remove the truncated string value and its key
-    // Find the last complete key-value pair before the truncation
-    repaired = json.substring(0, lastQuoteIdx + 1);
-    // We need to remove the incomplete key-value pair
-    // Find the pattern: ,"key":"incomplete value
-    const lastCommaBeforeString = repaired.lastIndexOf(',', lastQuoteIdx);
-    // Don't go before the opening { of the current object
+    const lastComma = repaired.lastIndexOf(',', lastQuoteIdx);
     const lastObjOpen = repaired.lastIndexOf('{', lastQuoteIdx);
-    if (lastCommaBeforeString > lastObjOpen) {
-      repaired = repaired.substring(0, lastCommaBeforeString);
+    if (lastComma > lastObjOpen) {
+      repaired = repaired.substring(0, lastComma);
     } else {
-      // The string is the first value in this object, just close after {
       repaired = repaired.substring(0, lastObjOpen + 1);
     }
   }
 
-  // Step 2: Count and close brackets/braces
-  let openBraces = 0, closeBraces = 0;
-  let openBrackets = 0, closeBrackets = 0;
+  let openB = 0, closeB = 0, openC = 0, closeC = 0;
   for (const ch of repaired) {
-    if (ch === '{') openBraces++;
-    else if (ch === '}') closeBraces++;
-    else if (ch === '[') openBrackets++;
-    else if (ch === ']') closeBrackets++;
+    if (ch === '{') openB++; else if (ch === '}') closeB++;
+    else if (ch === '[') openC++; else if (ch === ']') closeC++;
   }
-
-  // Close in reverse order: ] then }
-  while (closeBrackets < openBrackets) { repaired += ']'; closeBrackets++; }
-  while (closeBraces < openBraces) { repaired += '}'; closeBraces++; }
-
-  // Remove trailing commas again
+  while (closeC < openC) { repaired += ']'; closeC++; }
+  while (closeB < openB) { repaired += '}'; closeB++; }
   repaired = repaired.replace(/,\s*([\]\}])/g, '$1');
 
   try { return JSON.parse(repaired); } catch {}
-
   return null;
 }
 
@@ -105,38 +80,38 @@ function getFallbackCheckpoints(era: string, location: string, change: string): 
   return [
     {
       year: era,
-      era_label: 'نقطه انشعاب',
-      achievements: [change, 'شروع موج تغییرات'],
-      crises: ['مقاومت در برابر تغییر'],
-      world_state: `در ${location}، ${change} و جهان تغییر کرد.`,
-      geography: `${location} کانون تحولات شد.`,
+      era_label: 'The Divergence',
+      achievements: [change, 'The ripple begins'],
+      crises: ['Resistance to change'],
+      world_state: `In ${location}, ${change} altered history forever.`,
+      geography: `${location} became the epicenter of a new world.`,
       image_prompt: `Ancient city of ${location}, golden hour, cinematic concept art`
     },
     {
-      year: '+200 سال',
-      era_label: 'گسترش تغییر',
-      achievements: ['توسعه فناوری', 'شبکه‌های جدید'],
-      crises: ['جنگ منابع'],
-      world_state: 'تغییرات به همسایه‌ها سرایت کرد.',
-      geography: 'مرزها تغییر کرد.',
+      year: '+200 years',
+      era_label: 'The Ripple Spreads',
+      achievements: ['Technology expands', 'New networks form'],
+      crises: ['Resource wars'],
+      world_state: 'The change spread to neighboring civilizations, old orders collapsed.',
+      geography: 'Empire borders shifted dramatically.',
       image_prompt: 'Medieval city with advanced technology, oil painting, dramatic'
     },
     {
-      year: '+500 سال',
-      era_label: 'عصر جدید',
-      achievements: ['پیشرفت علمی', 'تمدن جدید'],
-      crises: ['بحران زیست‌محیطی'],
-      world_state: 'تمدن متفاوتی شکل گرفت.',
-      geography: 'قدرت‌های جدید ظهور کردند.',
+      year: '+400 years',
+      era_label: 'The New Order',
+      achievements: ['Scientific revolution', 'New civilization rises'],
+      crises: ['Environmental crisis'],
+      world_state: 'A civilization unlike anything in real history emerged.',
+      geography: 'New global powers rose from the ashes.',
       image_prompt: 'Futuristic ancient city, dramatic sunset, concept art, 8K'
     },
     {
-      year: '+800 سال',
-      era_label: 'برآیند نهایی',
-      achievements: ['جهان متحول', 'دستاوردهای بزرگ'],
-      crises: ['چالش‌های اخلاقی'],
-      world_state: 'پس از ۸۰۰ سال جهان جای متفاوتی شد.',
-      geography: 'نقشه جهان تغییر کرد.',
+      year: '+800 years',
+      era_label: 'The Final State',
+      achievements: ['A transformed world', 'Unimaginable progress'],
+      crises: ['New ethical dilemmas'],
+      world_state: 'After 800 years, the world became unrecognizable.',
+      geography: 'The world map was completely redrawn.',
       image_prompt: 'Epic futuristic city, ancient architecture merged with tech, cinematic'
     }
   ];
@@ -152,13 +127,9 @@ async function callLLM(zai: any, systemPrompt: string, userPrompt: string): Prom
     max_tokens: 1200,
   });
 
-  if (completion?.choices?.[0]?.message?.content) {
-    return completion.choices[0].message.content;
-  } else if (typeof completion === 'string') {
-    return completion;
-  } else if (completion?.output?.text) {
-    return completion.output.text;
-  }
+  if (completion?.choices?.[0]?.message?.content) return completion.choices[0].message.content;
+  if (typeof completion === 'string') return completion;
+  if (completion?.output?.text) return completion.output.text;
   return '';
 }
 
@@ -168,37 +139,35 @@ export async function POST(request: NextRequest) {
     const { era, location, change, magnitude } = body;
 
     const magnitudeMap = {
-      secret: 'مخفیانه',
-      limited: 'محدود - در اختیار حاکمان',
-      public: 'عمومی - همه مردم'
+      secret: 'Completely secret - only a small group knows',
+      limited: 'Limited - available to elites and rulers',
+      public: 'Fully public - everyone has access'
     };
 
-    const userPrompt = `Change: ${change}\nLocation: ${location}\nEra: ${era}\nMagnitude: ${magnitudeMap[magnitude]}\n\n4 checkpoints in JSON.`;
+    const userPrompt = `Change: ${change}\nLocation: ${location}\nEra: ${era}\nMagnitude: ${magnitudeMap[magnitude as keyof typeof magnitudeMap]}\n\nGenerate 4 checkpoints in JSON.`;
 
     const zai = await ZAI.create();
-
-    // Try up to 2 times
     let result = null;
+
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
         const responseText = await callLLM(zai, SYSTEM_PROMPT, userPrompt);
         if (!responseText) continue;
-
         const parsed = repairTruncatedJSON(responseText);
         if (parsed && validateCheckpoints(parsed)) {
           result = parsed;
           break;
         }
-        console.error(`Attempt ${attempt}: parse failed. Raw:`, responseText.substring(0, 300));
-      } catch (llmError) {
-        console.error(`Attempt ${attempt} error:`, llmError);
+        console.error(`Attempt ${attempt}: parse failed.`, responseText.substring(0, 300));
+      } catch (e) {
+        console.error(`Attempt ${attempt} error:`, e);
       }
     }
 
     let checkpoints = result?.checkpoints || getFallbackCheckpoints(era, location, change);
     let usedFallback = !result;
 
-    // Generate image (non-critical, 25s timeout)
+    // Image generation (non-critical, 25s timeout)
     let generatedImage: string | null = null;
     if (!usedFallback) {
       const lastCp = checkpoints[checkpoints.length - 1];
@@ -217,15 +186,11 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({
-      success: true,
-      checkpoints,
-      featured_image: generatedImage,
-    });
+    return NextResponse.json({ success: true, checkpoints, featured_image: generatedImage });
   } catch (error: any) {
     console.error('Simulation error:', error);
     return NextResponse.json(
-      { success: false, error: error.message || 'خطایی در شبیه‌سازی رخ داد' },
+      { success: false, error: error.message || 'Simulation failed' },
       { status: 500 }
     );
   }

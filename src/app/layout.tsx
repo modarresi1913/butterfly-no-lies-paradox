@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Butterfly Effect | اثر پروانه",
+  title: "The Butterfly Effect | Interactive Alternate History Simulator",
   description:
-    "آزمایشگاه فکری تعاملی - تاریخ را تغییر بده و جهان جدید را ببین",
+    "Change a single moment in history and watch 1000 years of alternate timeline unfold with AI.",
   keywords: [
     "Butterfly Effect",
     "Chaos Theory",
@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >

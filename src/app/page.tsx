@@ -129,164 +129,164 @@ const MAGNITUDE_OPTIONS: {
   },
 ];
 
-// ─── No-Lies Deep Dive Data ───────────────────────────
+// ─── No-Lies Deep Dive Data ──────────
 const DIMENSIONS = [
   {
     id: 'politics',
-    title: 'فروپاشی نظام‌های سیاسی',
-    titleEn: 'Political Collapse',
+    title: 'Collapse of Political Systems',
+    titleEn: 'Feudal & Theocratic Collapse',
     icon: <Landmark className="w-5 h-5" />,
     color: 'rose' as const,
-    summary: 'پادشاهان و کلیسا با «حق الهی» حکومت می‌کردند. با حذف دروغ، دیگر هیچ پادشاهی نمیتوانست ادعا کند خدا مرا برگزیده مگر اینکه واقعاً صداهایی بشنود.',
+    summary: 'Kings and churches ruled by "divine right" and "fear of imaginary enemies." Without lies, no king could claim God chose them unless they actually heard voices — which would make them psychotic and removable.',
     keyPoints: [
-      'شاهان مجبور به اعلام ضعف‌های اقتصادی خود',
-      'قراردادهای مخفی و معاهدات پشت پرده غیرممکن',
-      'جنگها فقط بر سر منابع آشکار (آب، زمین، غذا)',
-      'عصر تاریکی ۵۰۰ سال زودتر به پایان میرسد',
+      'Kings forced to publicly declare their economic weaknesses',
+      'Secret treaties and backroom alliances become impossible',
+      'Wars fought only over explicit resources (water, land, food)',
+      'The Dark Ages end ~500 years earlier',
     ],
-    quote: 'ما برای غارت ثروت و قدرت شخصی آمده‌ایم — کریستف کلمب در این دنیا',
+    quote: 'We have come for your gold and personal power — Columbus in this world',
   },
   {
     id: 'science',
-    title: 'انفجار علمی بیسابقه',
-    titleEn: 'Scientific Explosion',
+    title: 'Unprecedented Scientific Explosion',
+    titleEn: 'Science Without Deception',
     icon: <FlaskConical className="w-5 h-5" />,
     color: 'cyan' as const,
-    summary: 'بزرگترین مانع پیشرفت علمی، تعصب مبتنی بر دروغهای مصلحتی و جعل دادهها بوده. کپلر و گالیله نیازی به ترس از تفتیش عقاید ندارند.',
+    summary: 'The greatest barrier to scientific progress was never lack of intelligence, but bias based on "noble lies" and fabricated data. Kepler and Galileo would have no reason to fear the Inquisition.',
     keyPoints: [
-      'انقلاب صنعتی در قرن ۱۳ میلادی',
-      'نظریه تکامل و ژنتیک تا سال ۱۵۰۰',
-      'مقالات علمی جعلی هرگز منتشر نمیشوند',
-      'دانشمندان یافته‌های شکست‌خورده را صادقانه منتشر می‌کنند',
+      'Industrial Revolution in the 13th century',
+      'Theory of evolution and genetics mature by 1500',
+      'Fraudulent scientific papers never published',
+      'Scientists publish failed results honestly',
     ],
-    quote: 'تفسیرهای من اشتباه بود — پاپ در این دنیا',
+    quote: 'Our interpretations were wrong — The Pope in this world',
   },
   {
     id: 'religion',
-    title: 'بحران وجودی ادیان',
-    titleEn: 'Religious Crisis',
+    title: 'Existential Crisis of Religions',
+    titleEn: 'Theological Collapse',
     icon: <BookOpen className="w-5 h-5" />,
     color: 'amber' as const,
-    summary: 'ادیان ابراهیمی با چالشی مرگبار مواجه میشوند. اگر کشیش یا ملا نتواند بگوید این کلام خداست مگر اینکه شک داشته باشد، دین به دو شاخه تقسیم میشود.',
+    summary: 'Abrahamic religions face a fatal challenge: if a priest cannot say "this is the word of God" unless they genuinely believe it, religion splits into two branches.',
     keyPoints: [
-      'شاخه عرفانی: گزارش حس شخصی (نه ادعای حقیقت مطلق)',
-      'شاخه فلسفی: اخلاق صرف بدون استدلال متافیزیکی',
-      'جنگهای صلیبی هرگز رخ نمیدهند',
-      'خاورمیانه و اروپا به جای دشمنی مذهبی، تعامل اقتصادی شفاف',
+      'Mystical branch: reporting personal experience (not claiming absolute truth)',
+      'Philosophical branch: pure ethics without metaphysical arguments',
+      'The Crusades never happen',
+      'Middle East and Europe engage in transparent economic interaction',
     ],
-    quote: 'من فقط احساس می‌کنم خدا هست — راهب صادق',
+    quote: 'I only feel that God exists — An honest monk in this world',
   },
   {
     id: 'economy',
-    title: 'فروپاشی اقتصاد اعتباری',
-    titleEn: 'Credit Economy Collapse',
+    title: 'Collapse of Credit-Based Economy',
+    titleEn: 'Economy Without Promise',
     icon: <Scale className="w-5 h-5" />,
     color: 'emerald' as const,
-    summary: 'وامهای بانکی، بیمه و بازار بورس بر پایه اعتماد به وعده آینده استوارند. هیچکس نمیتواند بدهی خود را انکار کند یا قسط خوشبینانه بدهد.',
+    summary: 'Bank loans, insurance, and stock markets rely on "trust in future promises." No one can deny their debt or give optimistic installments when they genuinely cannot pay.',
     keyPoints: [
-      'حباب اقتصادی (لاله هلند، بحران ۲۰۰۸) به کلی از بین میرود',
-      'فروشنده: این لاله‌ها فقط پیاز هستند و ارزش ذاتی ندارند!',
-      'سرمایه‌گذاری کاهش اما هرگز ورشکستگی زنجیرهای',
-      'بازگشت به مبادله کالا به کالا و قراردادهای ریسک صریح',
+      'Economic bubbles (Tulip Mania, 2008 crisis) completely eliminated',
+      'Seller: These tulips are just bulbs with no inherent value!',
+      'Less investment but never a chain bankruptcy',
+      'Return to barter and explicit risk contracts',
     ],
-    quote: 'این لاله‌ها فقط پیاز هستند — فروشنده هلندی در این دنیا',
+    quote: 'These tulips are just bulbs — A Dutch merchant in this world',
   },
   {
     id: 'art',
-    title: 'تحول ادبیات و هنر',
-    titleEn: 'Art & Literature',
+    title: 'Transformation of Art & Literature',
+    titleEn: 'Art Without Pretense',
     icon: <Palette className="w-5 h-5" />,
     color: 'cyan' as const,
-    summary: 'رمان و فیلم دروغ محسوب نمیشوند چون با قرارداد تخیل همراهاند. اما تظاهر و رو در وایسی از بین میرود.',
+    summary: 'Novels and films are not considered lies because they come with a "fiction" contract. But pretense and hypocrisy vanish entirely from human expression.',
     keyPoints: [
-      'ادبیات به سمت اتوبیوگرافی محض و شعر عریان عاطفی',
-      'شخصیتپردازی ضدقهرمان (هملت، راسکولنیکف) هرگز خلق نمیشود',
-      'هنر به کاوش تضادهای درونی بدون ریا',
-      'طنز از بین میرود — چون بر پایه انتظار غلط است',
+      'Literature shifts to pure autobiography and raw emotional poetry',
+      'Anti-hero characters (Hamlet, Raskolnikov) are never created',
+      'Art explores internal contradictions without hypocrisy',
+      'Humor disappears — it relies on false expectations',
     ],
-    quote: 'من ۷۰٪ attracted به تو هستم، ۳۰٪ به خاطر تنهایی — عاشق در این دنیا',
+    quote: 'I am 70% attracted to you, 30% because of loneliness — A lover in this world',
   },
   {
     id: 'geopolitics',
-    title: 'استعمار صریح و سیاست بین‌الملل',
-    titleEn: 'Transparent Colonialism',
+    title: 'Transparent Colonialism',
+    titleEn: 'Geopolitics Without Mask',
     icon: <Ship className="w-5 h-5" />,
     color: 'amber' as const,
-    summary: 'وقتی کریستف کلمب به سرزمینی جدید میرسد، نمیتواند بگوید برای گسترش تمدن آمده. مجبور است بگوید برای بردهداری و غارت طلا آمده.',
+    summary: 'When Columbus or Vasco da Gama reaches a new land, they cannot say "we come to spread civilization." They must say: "We have come for slavery and gold."',
     keyPoints: [
-      'بومیان هشدار داده شده و با تمام توان میجنگند',
-      'نژادپرستی علمی هرگز شکل نمیگیرد',
-      'دانشمندان نمیتوانند دادهها را برای برتری نژاد سفید جعل کنند',
-      'سیاستمداران وجود ندارند — جای آنها مدیران اجرایی هستند',
+      'Indigenous peoples warned in advance, fight back with full force',
+      'Scientific racism never takes shape',
+      'Scientists cannot fabricate data for white racial superiority',
+      'Politicians do not exist — replaced by technical executives',
     ],
-    quote: 'ما برای بردهداری و غارت طلا آمده‌ایم — فاتح در این دنیا',
+    quote: 'We have come for slavery and gold — A conqueror in this world',
   },
 ];
 
 const COMPARISON_DATA = [
   {
-    field: 'علم و تکنولوژی',
+    field: 'Science & Tech',
     icon: <FlaskConical className="w-4 h-4" />,
-    ours: 'هوش مصنوعی، CRISPR، اینترنت',
-    theirs: 'colonisation مریخ، عمر ۱۵۰ ساله، هوش جمعی',
+    ours: 'AI, CRISPR, Internet',
+    theirs: 'Mars colonisation, 150yr lifespan, collective intelligence',
     advantage: 'them',
   },
   {
-    field: 'سیاست و حکومت',
+    field: 'Politics',
     icon: <Landmark className="w-4 h-4" />,
-    ours: 'دموکراسی ناکارآمد، پروپاگاندا',
-    theirs: 'سیستم فنی-مدیریتی بدون انتخابات احساسی',
+    ours: 'Inefficient democracy, propaganda',
+    theirs: 'Technical management systems, no emotional elections',
     advantage: 'them',
   },
   {
-    field: 'هنر و ادبیات',
+    field: 'Art & Literature',
     icon: <Palette className="w-4 h-4" />,
-    ours: 'رمان، فیلم، تئاتر، طنز',
-    theirs: 'شعر تجربه‌محور، مستند، موسیقی ابسترکت',
+    ours: 'Novels, cinema, theater, humor',
+    theirs: 'Experience-driven poetry, documentary, abstract music',
     advantage: 'ours',
   },
   {
-    field: 'جنگ و درگیری',
+    field: 'War & Conflict',
     icon: <Sword className="w-4 h-4" />,
-    ours: 'جنگهای نیابتی، پروپاگاندا، تروریسم',
-    theirs: 'جنگهای نادر اما ویرانگر و شفاف',
+    ours: 'Proxy wars, propaganda, terrorism',
+    theirs: 'Rare but devastating and transparent wars',
     advantage: 'neutral',
   },
   {
-    field: 'اقتصاد',
+    field: 'Economy',
     icon: <Scale className="w-4 h-4" />,
-    ours: 'بازار سرمایه، حباب، بحران مکرر',
-    theirs: 'اقتصاد مبادله‌ای پایدار اما کند',
+    ours: 'Capital markets, bubbles, recurring crises',
+    theirs: 'Stable but slow barter-based economy',
     advantage: 'neutral',
   },
   {
-    field: 'سلامت روان',
+    field: 'Mental Health',
     icon: <Brain className="w-4 h-4" />,
-    ours: 'افسردگی ~۲۰٪، دروغ سفید آرامشبخش',
-    theirs: 'افسردگی ~۳۵٪، حقیقت بی‌رحمانه',
+    ours: '~20% depression, white lies soothe',
+    theirs: '~35% depression, ruthless truth',
     advantage: 'ours',
   },
   {
-    field: 'دین و معنویت',
+    field: 'Religion & Spirituality',
     icon: <BookOpen className="w-4 h-4" />,
-    ours: 'دین نهادی، جنگهای مذهبی',
-    theirs: 'عرفان شخصی، فلسفه اخلاقی',
+    ours: 'Institutional religion, holy wars',
+    theirs: 'Personal mysticism, ethical philosophy',
     advantage: 'them',
   },
   {
-    field: 'عشق و روابط',
+    field: 'Love & Relationships',
     icon: <Heart className="w-4 h-4" />,
-    ours: 'عشق رمانتیک، ایده‌آل‌سازی، طلاق بالا',
-    theirs: 'روابط استوارتر اما کمتر عاشقانه',
+    ours: 'Romantic love, idealization, high divorce',
+    theirs: 'More stable but less passionate relationships',
     advantage: 'ours',
   },
 ];
 
 const PLOT_TWIST = {
-  title: 'پیچیدگی نهایی',
+  title: 'The Final Complexity',
   titleEn: 'The Plot Twist',
-  text: 'اگر فقط گفتار صادق باشد اما سکوت و حذف عمدی بخشی از واقعیت مجاز باشد، بشریت بهسرعت زبان حقیقت ناقص را ابداع می‌کند. برای سناریوی شگفتانگیز، باید فرض کنیم قصد فریب به کلی از مغز انسان پاک شده — انسان حتی نمیتواند فکر کند که چیزی را پنهان کند.',
-  punchline: 'ما هزار سال زودتر به ماه میرسیدیم، اما در طول سفر، فضانوردان مدام به هم میگفتند: بوی عرق تو واقعاً وحشتناک است!',
+  text: 'If only speech is truthful but intentional silence and selective omission of reality are still permitted, humanity would rapidly invent a language of "incomplete truth." For a truly shocking scenario, we must assume the intent to deceive is completely erased from the human brain — a person cannot even think about hiding something.',
+  punchline: 'We reached the Moon a thousand years earlier, but during the journey, the astronauts kept telling each other: your body odor is truly horrific!',
 };
 
 // ─── Butterfly SVG Component ───────────────────────────
@@ -1088,7 +1088,7 @@ function ExpandedDimension({ dimension }: { dimension: typeof DIMENSIONS[number]
         <div className={`flex items-start gap-2 p-3 rounded-lg border ${c.border} bg-background/30`}>
           <MessageCircle className={`w-4 h-4 shrink-0 mt-0.5 ${c.text}`} />
           <div>
-            <p className="text-[10px] text-muted-foreground mb-1">نقل قول از دنیای بدون دروغ:</p>
+            <p className="text-[10px] text-muted-foreground mb-1">Quote from the world without lies:</p>
             <p className="text-xs text-foreground/90 italic leading-relaxed">{dimension.quote}</p>
           </div>
         </div>
@@ -1104,17 +1104,17 @@ function ComparisonTable() {
       <div className="px-4 py-3 border-b border-border/30 bg-secondary/30">
         <h3 className="font-bold text-sm flex items-center gap-2">
           <Scale className="w-4 h-4 text-amber" />
-          دنیای ما در برابر دنیای بدون دروغ (۲۰۲۶ میلادی)
+          Our World vs. World Without Lies (2026 AD)
         </h3>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
             <tr className="border-b border-border/30">
-              <th className="text-right px-4 py-2.5 text-muted-foreground font-medium">حوزه</th>
-              <th className="text-right px-4 py-2.5 text-rose font-medium">دنیای ما</th>
-              <th className="text-right px-4 py-2.5 text-cyan font-medium">دنیای بدون دروغ</th>
-              <th className="text-center px-3 py-2.5 text-muted-foreground font-medium">برتری</th>
+              <th className="text-right px-4 py-2.5 text-muted-foreground font-medium">Domain</th>
+              <th className="text-right px-4 py-2.5 text-rose font-medium">Our World</th>
+            <th className="text-right px-4 py-2.5 text-cyan font-medium">No Lies</th>
+              <th className="text-center px-3 py-2.5 text-muted-foreground font-medium">Edge</th>
             </tr>
           </thead>
           <tbody>
@@ -1134,13 +1134,13 @@ function ComparisonTable() {
                 <td className="px-4 py-2.5 text-foreground/70">{row.theirs}</td>
                 <td className="px-3 py-2.5 text-center">
                   {row.advantage === 'ours' && (
-                    <Badge className="bg-rose/15 text-rose border-rose/30 text-[10px] px-1.5 py-0">ما</Badge>
+                    <Badge className="bg-rose/15 text-rose border-rose/30 text-[10px] px-1.5 py-0">Ours</Badge>
                   )}
                   {row.advantage === 'them' && (
-                    <Badge className="bg-cyan/15 text-cyan border-cyan/30 text-[10px] px-1.5 py-0">بدون دروغ</Badge>
+                    <Badge className="bg-cyan/15 text-cyan border-cyan/30 text-[10px] px-1.5 py-0">No Lies</Badge>
                   )}
                   {row.advantage === 'neutral' && (
-                    <Badge className="bg-secondary text-muted-foreground border-border/50 text-[10px] px-1.5 py-0">مساوی</Badge>
+                    <Badge className="bg-secondary text-muted-foreground border-border/50 text-[10px] px-1.5 py-0">Tie</Badge>
                   )}
                 </td>
               </motion.tr>
@@ -1179,7 +1179,7 @@ function PlotTwistSection() {
         <div className="flex items-center gap-2 pt-2">
           <Rocket className="w-3.5 h-3.5 text-emerald" />
           <p className="text-xs text-muted-foreground">
-            پیشرفت فنی بیشتر + رفاه روانی کمتر = پارادوکس تمدن بدون دروغ
+            More tech progress + less mental well-being = The paradox of a civilization without lies
           </p>
         </div>
       </div>
@@ -1217,12 +1217,12 @@ function DeepDiveView({
           Featured Scenario
         </motion.div>
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          پارادوکس{' '}
-          <span className="text-amber">بدون دروغ</span>
+          The{' '}
+          <span className="text-amber">No Lies</span>
         </h2>
         <p className="text-muted-foreground text-sm max-w-lg mx-auto leading-relaxed">
-          اگر در سال ۱۰۲۶ میلادی، مفهوم «دروغ» به طور کامل از زیست‌شناسی انسان حذف می‌شد،
-          تاریخ ۱۰۰۰ ساله بعدی چگونه بازنویسی می‌شد؟
+          If the concept of lying were biologically removed from humans in 1026 AD,
+          how would the next 1000 years of history be rewritten?
         </p>
       </div>
 
@@ -1236,9 +1236,9 @@ function DeepDiveView({
           <div className="flex-1">
             <div className="h-px bg-gradient-to-r from-emerald via-cyan to-amber" />
           </div>
-          <div className="text-xs text-muted-foreground">دنیای ما</div>
+          <div className="text-xs text-muted-foreground">Our World</div>
           <ChevronRight className="w-4 h-4 text-amber" />
-          <div className="text-xs text-amber font-medium">بدون دروغ</div>
+          <div className="text-xs text-amber font-medium">No Lies</div>
           <div className="w-3 h-3 rounded-full bg-amber" />
         </div>
       </div>
@@ -1246,9 +1246,9 @@ function DeepDiveView({
       {/* Quick Stats */}
       <div className="grid grid-cols-3 gap-3">
         {[
-          { label: '۶ بعد', sublabel: 'تحلیل شده', value: '۶', color: 'text-amber' },
-          { label: '۵۰۰ سال', sublabel: 'زودتر به عصر روشن', value: '۵۰۰', color: 'text-cyan' },
-          { label: '۸ حوزه', sublabel: 'مقایسه شده', value: '۸', color: 'text-emerald' },
+          { label: '6', sublabel: 'dimensions analyzed', value: '6', color: 'text-amber' },
+          { label: '500 years', sublabel: 'earlier to the Enlightenment', value: '500', color: 'text-cyan' },
+          { label: '8', sublabel: 'domains compared', value: '8', color: 'text-emerald' },
         ].map((stat, i) => (
           <motion.div
             key={i}
@@ -1268,7 +1268,7 @@ function DeepDiveView({
       <div className="space-y-2">
         <p className="text-xs text-muted-foreground px-1 flex items-center gap-1.5">
           <ArrowDown className="w-3 h-3" />
-          برای جزئیات بیشتر روی هر بعد کلیک کنید
+          Click on each dimension for more details
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {DIMENSIONS.map((dim, i) => (
@@ -1300,7 +1300,7 @@ function DeepDiveView({
         >
           <span className="flex items-center gap-2 text-sm font-medium">
             <Scale className="w-4 h-4 text-amber" />
-            جدول مقایسه: دنیای ما vs. دنیای بدون دروغ
+            Comparison Table: Our World vs. World Without Lies
           </span>
           <motion.div
             animate={{ rotate: showComparison ? 180 : 0 }}
@@ -1333,14 +1333,14 @@ function DeepDiveView({
           className="gap-2 w-full sm:w-auto border-border/50"
         >
           <ArrowLeft className="w-4 h-4" />
-          بازگشت
+          Back
         </Button>
         <Button
           onClick={onSimulate}
           className="bg-amber hover:bg-amber-dark text-black font-bold px-6 py-5 gap-2 shadow-lg shadow-amber/20 w-full sm:w-auto"
         >
           <Rocket className="w-4 h-4" />
-          شبیه‌سازی با هوش مصنوعی
+          Simulate with AI
         </Button>
       </div>
     </motion.div>
@@ -1425,13 +1425,13 @@ function HeroSection({ onStart, onExplore }: { onStart: () => void; onExplore: (
               </div>
               <div className="flex-1 text-right">
                 <h3 className="font-bold text-base mb-1 group-hover:text-amber transition-colors">
-                  {featured.tag}: حذف کامل مفهوم دروغ
+                  {featured.tag}: Complete removal of the concept of lying
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  اگر در سال ۱۰۲۶ میلادی، انسان‌ها قصد فریب نداشتند — ۶ بعد تحلیلی + جدول مقایسه + شبیه‌سازی AI
+                If humans could not intend to deceive in 1026 AD — 6 analytical dimensions + comparison table + AI simulation
                 </p>
                 <div className="flex items-center gap-2 mt-3 text-amber/70 group-hover:text-amber transition-colors">
-                  <span className="text-xs font-medium">کاوش کنید</span>
+                  <span className="text-xs font-medium">Explore</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </div>
               </div>

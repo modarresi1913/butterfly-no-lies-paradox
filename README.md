@@ -24,7 +24,7 @@
 
 <p>
   <b>Featured: پارادوکس بدون دروغ — The No-Lies Paradox</b><br/>
-  <i>اگر در سال ۱۰۲۶ میلادی، مفهوم «دروغ» از زیست‌شناسی انسان حذف می‌شد، تاریخ چگونه بازنویسی می‌شد؟</i>
+  <i>What if the concept of lying was biologically removed from humans in 1026 AD? How would 1000 years of history be rewritten?</i>
 </p>
 
 <a href="https://butterfly0.space-z.ai/">

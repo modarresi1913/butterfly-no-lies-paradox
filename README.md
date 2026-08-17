@@ -1,53 +1,62 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0a0a0f&height=180&section=header&text=Butterfly%20Effect%3A%20No-Lies%20Paradox&fontSize=36&fontColor=f59e0b&animation=twinkling&fontAlignY=32&desc=AI-Powered%20Alternate%20History%20Simulator%20%E2%80%94%20Chaos%20Theory%20%C3%97%20Counterfactual%20Thinking&descSize=16&descColor=94a3b8" alt="banner" />
+<a href="https://github.com/modarresi1913/butterfly-no-lies-paradox">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0a0a0f&height=180&section=header&text=Butterfly%20Effect%3A%20No-Lies%20Paradox&fontSize=36&fontColor=f59e0b&animation=twinkling&fontAlignY=32&desc=AI-Powered%20Alternate%20History%20Simulator%20%E2%80%94%20Chaos%20Theory%20%C3%97%20Counterfactual%20Thinking&descSize=16&descColor=94a3b8" alt="Butterfly Effect No-Lies Paradox - AI Alternate History Simulator" />
+</a>
 
 <p>
-  <img src="https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Framer_Motion-12-FF0055?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js" alt="Next.js 16" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript 5" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4" />
+  <img src="https://img.shields.io/badge/Framer_Motion-12-FF0055?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion 12" />
   <img src="https://img.shields.io/badge/shadcn/ui-latest-18181B?style=flat-square" alt="shadcn/ui" />
-  <img src="https://img.shields.io/badge/License-MIT-238636?style=flat-square" alt="License" />
+  <img src="https://img.shields.io/badge/License-MIT-238636?style=flat-square" alt="MIT License" />
 </p>
 
 <p>
-  <img src="https://img.shields.io/github/stars/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="Stars" />
-  <img src="https://img.shields.io/github/forks/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="Forks" />
-  <img src="https://img.shields.io/github/issues/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="Issues" />
-  <img src="https://img.shields.io/badge/forked%20from-the_butterfly_effect-amber?style=flat-square" alt="Forked from" />
+  <img src="https://img.shields.io/github/stars/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="GitHub Stars" />
+  <img src="https://img.shields.io/github/forks/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="GitHub Forks" />
+  <img src="https://img.shields.io/github/issues/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="GitHub Issues" />
+  <img src="https://img.shields.io/badge/forked%20from-the--butterfly--effect-amber?style=flat-square" alt="Forked from the-butterfly-effect" />
 </p>
 
 <p>
   <b>What if a single butterfly flap rewrote a thousand years of history?</b><br/>
-  <i>Pick a moment. Change one variable. Watch the cascade unfold.</i>
+  <i>Pick a historical turning point. Change one variable. Watch the cascade unfold with AI.</i>
 </p>
 
 </div>
 
 ---
 
-## Overview
+## 🦋 Overview
 
 > "Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?"
 > — <i>Edward Lorenz, 1972</i>
 
-**Butterfly Effect: No-Lies Paradox** is a fork of [modarresi1913/the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect) — an interactive **alternate history simulator** powered by **generative AI**, **chaos theory**, and **counterfactual reasoning**.
+**Butterfly Effect: No-Lies Paradox** is an interactive **alternate history simulator** that combines **generative AI**, **chaos theory**, and **counterfactual reasoning** to explore how tiny changes in history could reshape civilization. Built as a thematic fork of [modarresi1913/the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect), this project adds a comprehensive **deep-dive scenario engine** built around a single provocative question:
 
-Users choose a historical turning point, set its magnitude, and the AI engine simulates how that tiny change ripples across centuries — generating unique **timelines**, **world states**, and **concept art** along the way.
+### What if lying became biologically impossible in 1026 AD?
 
-### What This Fork Adds
-
-This fork introduces a **featured deep-dive scenario** — *The No-Lies Paradox* — a systematic exploration of what happens when the concept of lying is biologically removed from the human brain in 1026 AD:
-
-- **6 interactive dimensions** — Politics, Science, Religion, Economy, Art, Geopolitics
-- **Comparison engine** — Our World vs. World Without Lies across 8 measurable domains
-- **The Plot Twist** — Why a deception-free civilization reaches Mars faster but suffers 35% depression rates
-- One-click **AI simulation** that generates a full alternate timeline from the scenario
+Users choose any historical turning point, adjust its magnitude, and the AI engine simulates how that change ripples across centuries — generating unique **timelines**, **world states**, and **concept art** along the way.
 
 ---
 
-## The No-Lies Paradox: 6 Dimensions
+## ✨ What This Fork Adds
+
+The original [the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect) provides the core AI simulation wizard. This fork layers a complete **thematic scenario** on top:
+
+| Feature | Description |
+|---------|-------------|
+| **6 Interactive Dimensions** | Expandable cards covering Politics, Science, Religion, Economy, Art, and Geopolitics — each with key insights, alternate-world quotes, and cascading effects |
+| **Comparison Engine** | Side-by-side comparison of Our World vs. World Without Lies across 8 measurable domains with advantage indicators |
+| **The Plot Twist** | A civilization paradox: deception-free humans reach Mars faster but suffer 35% depression rates — exploring the dark side of absolute truth |
+| **One-Click AI Simulation** | Launches the full AI timeline generator pre-loaded with the No-Lies scenario |
+| **Pre-built Scenarios** | No-Lies Paradox (1026 AD), Printing Press by Cyrus the Great (500 BC), Ancient Egyptian Batteries (1200 BC), Aristotle Discovers Atomic Energy (330 BC) |
+
+---
+
+## 🧠 The No-Lies Paradox: 6 Dimensions
 
 | # | Dimension | Core Question |
 |---|-----------|---------------|
@@ -60,8 +69,8 @@ This fork introduces a **featured deep-dive scenario** — *The No-Lies Paradox*
 
 ### Comparison: Our World vs. No-Lies World (2026 AD)
 
-| Domain | Our World | No-Lies World | Who Wins? |
-|--------|-----------|---------------|-----------|
+| Domain | Our World | No-Lies World | Advantage |
+|--------|-----------|---------------|----------|
 | Science & Tech | AI, CRISPR, Internet | Mars colonisation, 150yr lifespan | No-Lies |
 | Politics | Inefficient democracy, propaganda | Technical management systems | No-Lies |
 | Art & Literature | Novels, cinema, humor | Poetry, documentary, abstract music | Ours |
@@ -75,7 +84,7 @@ This fork introduces a **featured deep-dive scenario** — *The No-Lies Paradox*
 
 ---
 
-## Features
+## 🚀 Features
 
 <table>
 <tr>
@@ -86,7 +95,7 @@ This fork introduces a **featured deep-dive scenario** — *The No-Lies Paradox*
 2. **The Magnitude** — Secret / Limited / Public
 3. **The Time Leap** — AI generates the alternate timeline
 
-Pre-built scenarios include:
+Pre-built scenarios:
 - No-Lies Paradox (1026 AD)
 - Printing Press by Cyrus the Great (500 BC)
 - Ancient Egyptian Batteries (1200 BC)
@@ -116,7 +125,7 @@ Pre-built scenarios include:
 </td>
 <td width="50%">
 
-### Engineering
+### Engineering Highlights
 - **Resilient JSON parser** — repairs truncated LLM output
 - **Hydration-safe particles** — deterministic SSR
 - **Graceful degradation** — fallback checkpoints if AI fails
@@ -128,7 +137,7 @@ Pre-built scenarios include:
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
 ```bash
 git clone https://github.com/modarresi1913/butterfly-no-lies-paradox.git
@@ -167,7 +176,7 @@ bun run start
 
 ---
 
-## Architecture
+## 🏗 Architecture
 
 ```
   User Input          AI Engine              Output
@@ -198,7 +207,7 @@ interface Checkpoint {
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 butterfly-no-lies-paradox/
@@ -219,7 +228,7 @@ butterfly-no-lies-paradox/
 
 ---
 
-## Technical Deep Dives
+## 🔧 Technical Deep Dives
 
 <details>
 <summary><b>Resilient JSON Parsing</b></summary>
@@ -265,13 +274,20 @@ Fallback:  Hand-crafted checkpoints     [always pass]
 
 ---
 
-## Keywords
+## 🏷 Topics & Keywords
 
-`alternate-history` `butterfly-effect` `chaos-theory` `counterfactual` `ai-simulator` `what-if-scenario` `no-lies-paradox` `alternate-timeline` `generative-ai` `nextjs` `shadcn-ui` `framer-motion` `thought-experiment` `historical-simulation` `worldbuilding`
+```
+alternate-history  butterfly-effect  chaos-theory  counterfactual-thinking
+ai-simulator  what-if-scenario  no-lies-paradox  alternate-timeline
+generative-ai  nextjs  nextjs16  typescript  shadcn-ui  framer-motion
+thought-experiment  historical-simulation  worldbuilding  timeline-generator
+ai-timeline  counterfactual-history  alternate-reality  ai-powered
+open-source  react  tailwindcss  interactive-storytelling
+```
 
 ---
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - **Original project:** [modarresi1913/the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect) — the AI-powered alternate history simulator this fork builds upon
 - **Edward Lorenz** — for the chaos theory that inspired it all
@@ -279,7 +295,7 @@ Fallback:  Hand-crafted checkpoints     [always pass]
 
 ---
 
-## License
+## 📄 License
 
 [MIT](LICENSE) — forked from [the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect) under the same license.
 
@@ -293,6 +309,6 @@ Fallback:  Hand-crafted checkpoints     [always pass]
 
 <b>Forked with thought-experiment love from <a href="https://github.com/modarresi1913/the-butterfly-effect">the-butterfly-effect</a></b>
 <br/>
-<sub>If you enjoy alternate history & what-if scenarios, consider giving this fork a star!</sub>
+<sub>If you enjoy alternate history & what-if scenarios, consider giving this fork a ⭐!</sub>
 
 </div>

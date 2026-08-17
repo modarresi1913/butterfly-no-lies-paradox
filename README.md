@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0a0a0f&height=180&section=header&text=The%20Butterfly%20Effect&fontSize=42&fontColor=f59e0b&animation=twinkling&fontAlignY=32&desc=AI-Powered%20Alternate%20History%20Simulator&descSize=18&descColor=94a3b8" alt="banner" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0a0a0f&height=180&section=header&text=The%20Butterfly%20Effect%3A%20No-Lies%20Paradox&fontSize=36&fontColor=f59e0b&animation=twinkling&fontAlignY=32&desc=AI-Powered%20Alternate%20History%20Simulator%20%E2%80%94%20%D9%BE%D8%A7%D8%B1%D8%A7%D8%AF%D9%88%DA%A9%DD%A1%20%D8%A8%D8%AF%D9%88%D9%86%20%D8%AF%D8%B1%D9%88%D8%BA&descSize=16&descColor=94a3b8" alt="banner" />
 
 <p>
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js" alt="Next.js" />
@@ -22,6 +22,11 @@
   <i>Pick a moment. Change it. Watch 1,000 years unfold.</i>
 </p>
 
+<p>
+  <b>Featured: پارادوکس بدون دروغ — The No-Lies Paradox</b><br/>
+  <i>اگر در سال ۱۰۲۶ میلادی، مفهوم «دروغ» از زیست‌شناسی انسان حذف می‌شد، تاریخ چگونه بازنویسی می‌شد؟</i>
+</p>
+
 <a href="https://butterfly0.space-z.ai/">
   <img src="https://img.shields.io/badge/Live_Demo-butterfly0.space--z.ai-f59e0b?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xOCAxM2g2YTggOCAwIDAgMSAwIDE2SDZBOCA4IDAgMCAxIDYgMTNoNiI+PC9wYXRoPjxwYXRoIGQ9Ik0xNSAzaDYiIGRhdGEtbG9ja2VkPSJ0cnVlIj48L3BhdGg+PC9zdmc+&logoColor=black" alt="Live Demo" />
 </a>
@@ -36,6 +41,16 @@
 > — <i>Edward Lorenz, 1972</i>
 
 **The Butterfly Effect** is an interactive web application that merges **Chaos Theory**, **Alternative History**, and **Generative AI** into a cinematic experience. Users choose a historical turning point, and the AI engine simulates how that tiny change ripples across centuries — generating unique timelines, world states, and concept art along the way.
+
+### Featured: The No-Lies Paradox (پارادوکس بدون دروغ)
+
+This fork adds a **deep-dive interactive analysis** of a single thought experiment: *What if the concept of lying was biologically removed from humans in 1026 AD?*
+
+- **6 interactive dimensions**: Political Collapse, Scientific Explosion, Religious Crisis, Credit Economy Collapse, Art & Literature, Transparent Colonialism
+- **Comparison table**: Our World vs. World Without Lies across 8 domains
+- **The Plot Twist**: Why removing deception creates a technologically advanced but psychologically brutal civilization
+- All content in **Persian (Farsi)** with English labels
+- One-click AI simulation of the scenario
 
 ---
 
@@ -54,11 +69,12 @@ Simple, guided flow:
 </td>
 <td width="50%">
 
-### 🤖 AI Timeline Engine
-- LLM generates **4 branching checkpoints** spanning 800+ years
-- Each checkpoint includes achievements, crises, world state, and geography
-- **AI-generated concept art** for the final era
-- Smart retry + fallback for reliable responses
+### 🧠 No-Lies Deep Dive (NEW)
+- **6 expandable dimension cards** with key points & alternate-world quotes
+- **Interactive comparison table** — Our World vs. World Without Lies (8 domains)
+- **Plot Twist section** with the famous astronaut punchline
+- Full **Persian (Farsi)** content with RTL support
+- One-click **AI simulation** of the No-Lies scenario
 
 </td>
 </tr>

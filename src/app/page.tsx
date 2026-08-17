@@ -17,6 +17,19 @@ import {
   Users,
   RotateCcw,
   ArrowLeft,
+  Sword,
+  FlaskConical,
+  BookOpen,
+  Landmark,
+  Palette,
+  Ship,
+  Brain,
+  Heart,
+  Scale,
+  Rocket,
+  MessageCircle,
+  ArrowDown,
+  X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -26,7 +39,7 @@ import { Badge } from '@/components/ui/badge';
 
 // ─── Types ─────────────────────────────────────────────
 type Magnitude = 'secret' | 'limited' | 'public';
-type Step = 'idle' | 'ripple' | 'magnitude' | 'simulate' | 'results';
+type Step = 'idle' | 'ripple' | 'magnitude' | 'simulate' | 'results' | 'explore';
 
 interface Checkpoint {
   year: string;
@@ -41,22 +54,33 @@ interface Checkpoint {
 // ─── Pre-built Scenarios ────────────────────────────────
 const SCENARIOS = [
   {
+    era: '1026 AD',
+    location: 'Medieval Europe & Middle East',
+    change: 'Complete removal of the concept of lying from human biology and psychology — humans can no longer intend to deceive',
+    magnitude: 'public' as Magnitude,
+    featured: true,
+    tag: 'The No-Lies Paradox',
+  },
+  {
     era: '500 BC',
     location: 'Ancient Iran - Persepolis',
     change: 'Invention of the printing press by Cyrus the Great',
     magnitude: 'public' as Magnitude,
+    tag: 'Knowledge Dawn',
   },
   {
     era: '1200 BC',
     location: 'Ancient Egypt - Cairo',
     change: 'Invention of the battery and early electric lamps',
     magnitude: 'limited' as Magnitude,
+    tag: 'Electric Dawn',
   },
   {
     era: '330 BC',
     location: 'Ancient Greece - Athens',
     change: 'Discovery of atomic energy by Aristotle',
     magnitude: 'secret' as Magnitude,
+    tag: 'Atomic Antiquity',
   },
 ];
 
@@ -104,6 +128,166 @@ const MAGNITUDE_OPTIONS: {
     icon: <Users className="w-5 h-5" />,
   },
 ];
+
+// ─── No-Lies Deep Dive Data ───────────────────────────
+const DIMENSIONS = [
+  {
+    id: 'politics',
+    title: 'فروپاشی نظام‌های سیاسی',
+    titleEn: 'Political Collapse',
+    icon: <Landmark className="w-5 h-5" />,
+    color: 'rose' as const,
+    summary: 'پادشاهان و کلیسا با «حق الهی» حکومت می‌کردند. با حذف دروغ، دیگر هیچ پادشاهی نمیتوانست ادعا کند خدا مرا برگزیده مگر اینکه واقعاً صداهایی بشنود.',
+    keyPoints: [
+      'شاهان مجبور به اعلام ضعف‌های اقتصادی خود',
+      'قراردادهای مخفی و معاهدات پشت پرده غیرممکن',
+      'جنگها فقط بر سر منابع آشکار (آب، زمین، غذا)',
+      'عصر تاریکی ۵۰۰ سال زودتر به پایان میرسد',
+    ],
+    quote: 'ما برای غارت ثروت و قدرت شخصی آمده‌ایم — کریستف کلمب در این دنیا',
+  },
+  {
+    id: 'science',
+    title: 'انفجار علمی بیسابقه',
+    titleEn: 'Scientific Explosion',
+    icon: <FlaskConical className="w-5 h-5" />,
+    color: 'cyan' as const,
+    summary: 'بزرگترین مانع پیشرفت علمی، تعصب مبتنی بر دروغهای مصلحتی و جعل دادهها بوده. کپلر و گالیله نیازی به ترس از تفتیش عقاید ندارند.',
+    keyPoints: [
+      'انقلاب صنعتی در قرن ۱۳ میلادی',
+      'نظریه تکامل و ژنتیک تا سال ۱۵۰۰',
+      'مقالات علمی جعلی هرگز منتشر نمیشوند',
+      'دانشمندان یافته‌های شکست‌خورده را صادقانه منتشر می‌کنند',
+    ],
+    quote: 'تفسیرهای من اشتباه بود — پاپ در این دنیا',
+  },
+  {
+    id: 'religion',
+    title: 'بحران وجودی ادیان',
+    titleEn: 'Religious Crisis',
+    icon: <BookOpen className="w-5 h-5" />,
+    color: 'amber' as const,
+    summary: 'ادیان ابراهیمی با چالشی مرگبار مواجه میشوند. اگر کشیش یا ملا نتواند بگوید این کلام خداست مگر اینکه شک داشته باشد، دین به دو شاخه تقسیم میشود.',
+    keyPoints: [
+      'شاخه عرفانی: گزارش حس شخصی (نه ادعای حقیقت مطلق)',
+      'شاخه فلسفی: اخلاق صرف بدون استدلال متافیزیکی',
+      'جنگهای صلیبی هرگز رخ نمیدهند',
+      'خاورمیانه و اروپا به جای دشمنی مذهبی، تعامل اقتصادی شفاف',
+    ],
+    quote: 'من فقط احساس می‌کنم خدا هست — راهب صادق',
+  },
+  {
+    id: 'economy',
+    title: 'فروپاشی اقتصاد اعتباری',
+    titleEn: 'Credit Economy Collapse',
+    icon: <Scale className="w-5 h-5" />,
+    color: 'emerald' as const,
+    summary: 'وامهای بانکی، بیمه و بازار بورس بر پایه اعتماد به وعده آینده استوارند. هیچکس نمیتواند بدهی خود را انکار کند یا قسط خوشبینانه بدهد.',
+    keyPoints: [
+      'حباب اقتصادی (لاله هلند، بحران ۲۰۰۸) به کلی از بین میرود',
+      'فروشنده: این لاله‌ها فقط پیاز هستند و ارزش ذاتی ندارند!',
+      'سرمایه‌گذاری کاهش اما هرگز ورشکستگی زنجیرهای',
+      'بازگشت به مبادله کالا به کالا و قراردادهای ریسک صریح',
+    ],
+    quote: 'این لاله‌ها فقط پیاز هستند — فروشنده هلندی در این دنیا',
+  },
+  {
+    id: 'art',
+    title: 'تحول ادبیات و هنر',
+    titleEn: 'Art & Literature',
+    icon: <Palette className="w-5 h-5" />,
+    color: 'cyan' as const,
+    summary: 'رمان و فیلم دروغ محسوب نمیشوند چون با قرارداد تخیل همراهاند. اما تظاهر و رو در وایسی از بین میرود.',
+    keyPoints: [
+      'ادبیات به سمت اتوبیوگرافی محض و شعر عریان عاطفی',
+      'شخصیتپردازی ضدقهرمان (هملت، راسکولنیکف) هرگز خلق نمیشود',
+      'هنر به کاوش تضادهای درونی بدون ریا',
+      'طنز از بین میرود — چون بر پایه انتظار غلط است',
+    ],
+    quote: 'من ۷۰٪ attracted به تو هستم، ۳۰٪ به خاطر تنهایی — عاشق در این دنیا',
+  },
+  {
+    id: 'geopolitics',
+    title: 'استعمار صریح و سیاست بین‌الملل',
+    titleEn: 'Transparent Colonialism',
+    icon: <Ship className="w-5 h-5" />,
+    color: 'amber' as const,
+    summary: 'وقتی کریستف کلمب به سرزمینی جدید میرسد، نمیتواند بگوید برای گسترش تمدن آمده. مجبور است بگوید برای بردهداری و غارت طلا آمده.',
+    keyPoints: [
+      'بومیان هشدار داده شده و با تمام توان میجنگند',
+      'نژادپرستی علمی هرگز شکل نمیگیرد',
+      'دانشمندان نمیتوانند دادهها را برای برتری نژاد سفید جعل کنند',
+      'سیاستمداران وجود ندارند — جای آنها مدیران اجرایی هستند',
+    ],
+    quote: 'ما برای بردهداری و غارت طلا آمده‌ایم — فاتح در این دنیا',
+  },
+];
+
+const COMPARISON_DATA = [
+  {
+    field: 'علم و تکنولوژی',
+    icon: <FlaskConical className="w-4 h-4" />,
+    ours: 'هوش مصنوعی، CRISPR، اینترنت',
+    theirs: 'colonisation مریخ، عمر ۱۵۰ ساله، هوش جمعی',
+    advantage: 'them',
+  },
+  {
+    field: 'سیاست و حکومت',
+    icon: <Landmark className="w-4 h-4" />,
+    ours: 'دموکراسی ناکارآمد، پروپاگاندا',
+    theirs: 'سیستم فنی-مدیریتی بدون انتخابات احساسی',
+    advantage: 'them',
+  },
+  {
+    field: 'هنر و ادبیات',
+    icon: <Palette className="w-4 h-4" />,
+    ours: 'رمان، فیلم، تئاتر، طنز',
+    theirs: 'شعر تجربه‌محور، مستند، موسیقی ابسترکت',
+    advantage: 'ours',
+  },
+  {
+    field: 'جنگ و درگیری',
+    icon: <Sword className="w-4 h-4" />,
+    ours: 'جنگهای نیابتی، پروپاگاندا، تروریسم',
+    theirs: 'جنگهای نادر اما ویرانگر و شفاف',
+    advantage: 'neutral',
+  },
+  {
+    field: 'اقتصاد',
+    icon: <Scale className="w-4 h-4" />,
+    ours: 'بازار سرمایه، حباب، بحران مکرر',
+    theirs: 'اقتصاد مبادله‌ای پایدار اما کند',
+    advantage: 'neutral',
+  },
+  {
+    field: 'سلامت روان',
+    icon: <Brain className="w-4 h-4" />,
+    ours: 'افسردگی ~۲۰٪، دروغ سفید آرامشبخش',
+    theirs: 'افسردگی ~۳۵٪، حقیقت بی‌رحمانه',
+    advantage: 'ours',
+  },
+  {
+    field: 'دین و معنویت',
+    icon: <BookOpen className="w-4 h-4" />,
+    ours: 'دین نهادی، جنگهای مذهبی',
+    theirs: 'عرفان شخصی، فلسفه اخلاقی',
+    advantage: 'them',
+  },
+  {
+    field: 'عشق و روابط',
+    icon: <Heart className="w-4 h-4" />,
+    ours: 'عشق رمانتیک، ایده‌آل‌سازی، طلاق بالا',
+    theirs: 'روابط استوارتر اما کمتر عاشقانه',
+    advantage: 'ours',
+  },
+];
+
+const PLOT_TWIST = {
+  title: 'پیچیدگی نهایی',
+  titleEn: 'The Plot Twist',
+  text: 'اگر فقط گفتار صادق باشد اما سکوت و حذف عمدی بخشی از واقعیت مجاز باشد، بشریت بهسرعت زبان حقیقت ناقص را ابداع می‌کند. برای سناریوی شگفتانگیز، باید فرض کنیم قصد فریب به کلی از مغز انسان پاک شده — انسان حتی نمیتواند فکر کند که چیزی را پنهان کند.',
+  punchline: 'ما هزار سال زودتر به ماه میرسیدیم، اما در طول سفر، فضانوردان مدام به هم میگفتند: بوی عرق تو واقعاً وحشتناک است!',
+};
 
 // ─── Butterfly SVG Component ───────────────────────────
 function ButterflyIcon({ className }: { className?: string }) {
@@ -275,7 +459,7 @@ function RippleStep({
       {/* Quick Scenarios */}
       <div className="space-y-2">
         <p className="text-xs text-muted-foreground px-1">Suggested scenarios:</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {SCENARIOS.map((s, i) => (
             <motion.button
               key={i}
@@ -292,7 +476,12 @@ function RippleStep({
                 onChange('change', s.change);
               }}
             >
-              <p className="text-xs font-medium truncate">{s.change}</p>
+              <div className="flex items-center gap-2 mb-0.5">
+                {'tag' in s && s.tag && (
+                  <Badge className="bg-amber/15 text-amber border-amber/30 text-[9px] px-1.5 py-0">{s.tag}</Badge>
+                )}
+                <p className="text-xs font-medium truncate">{s.change.substring(0, 60)}{s.change.length > 60 ? '...' : ''}</p>
+              </div>
               <p className="text-xs text-muted-foreground mt-1">
                 {s.era} &bull; {s.location}
               </p>
@@ -808,8 +997,359 @@ function ResultsView({
   );
 }
 
+// ─── Deep Dive: Dimension Card ────────────────────────
+function DimensionCard({
+  dimension,
+  index,
+  isActive,
+  onClick,
+}: {
+  dimension: typeof DIMENSIONS[number];
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  const colorMap: Record<string, { border: string; bg: string; text: string; glow: string }> = {
+    rose: { border: 'border-rose/30', bg: 'bg-rose/10', text: 'text-rose', glow: 'shadow-rose/10' },
+    cyan: { border: 'border-cyan/30', bg: 'bg-cyan/10', text: 'text-cyan', glow: 'shadow-cyan/10' },
+    amber: { border: 'border-amber/30', bg: 'bg-amber/10', text: 'text-amber', glow: 'shadow-amber/10' },
+    emerald: { border: 'border-emerald/30', bg: 'bg-emerald/10', text: 'text-emerald', glow: 'shadow-emerald/10' },
+  };
+  const c = colorMap[dimension.color] || colorMap.amber;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.4 }}
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={onClick}
+      className={`cursor-pointer rounded-xl border-2 p-4 transition-all ${
+        isActive
+          ? `${c.border} ${c.bg} shadow-lg ${c.glow}`
+          : 'border-border/50 bg-card/30 hover:border-border'
+      }`}
+    >
+      <div className="flex items-start gap-3">
+        <div className={`shrink-0 p-2 rounded-lg ${c.bg} ${c.text}`}>
+          {dimension.icon}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1">
+            <h3 className="font-bold text-sm">{dimension.title}</h3>
+            <span className="text-[10px] text-muted-foreground font-mono">{dimension.titleEn}</span>
+          </div>
+          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+            {dimension.summary}
+          </p>
+        </div>
+        <ChevronRight className={`w-4 h-4 shrink-0 mt-1 transition-colors ${isActive ? c.text : 'text-muted-foreground/40'}`} />
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Deep Dive: Expanded Dimension ─────────────────────
+function ExpandedDimension({ dimension }: { dimension: typeof DIMENSIONS[number] }) {
+  const colorMap: Record<string, { border: string; bg: string; text: string }> = {
+    rose: { border: 'border-rose/20', bg: 'bg-rose/5', text: 'text-rose' },
+    cyan: { border: 'border-cyan/20', bg: 'bg-cyan/5', text: 'text-cyan' },
+    amber: { border: 'border-amber/20', bg: 'bg-amber/5', text: 'text-amber' },
+    emerald: { border: 'border-emerald/20', bg: 'bg-emerald/5', text: 'text-emerald' },
+  };
+  const c = colorMap[dimension.color] || colorMap.amber;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: 'auto' }}
+      exit={{ opacity: 0, height: 0 }}
+      className={`rounded-xl border ${c.border} ${c.bg} overflow-hidden`}
+    >
+      <div className="p-4 md:p-6 space-y-4">
+        <p className="text-sm leading-relaxed text-foreground/90">{dimension.summary}</p>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {dimension.keyPoints.map((point, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="flex items-start gap-2 text-xs"
+            >
+              <Zap className={`w-3 h-3 shrink-0 mt-0.5 ${c.text}`} />
+              <span className="text-foreground/80">{point}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className={`flex items-start gap-2 p-3 rounded-lg border ${c.border} bg-background/30`}>
+          <MessageCircle className={`w-4 h-4 shrink-0 mt-0.5 ${c.text}`} />
+          <div>
+            <p className="text-[10px] text-muted-foreground mb-1">نقل قول از دنیای بدون دروغ:</p>
+            <p className="text-xs text-foreground/90 italic leading-relaxed">{dimension.quote}</p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Deep Dive: Comparison Table ───────────────────────
+function ComparisonTable() {
+  return (
+    <div className="rounded-xl border border-border/50 bg-card/30 overflow-hidden">
+      <div className="px-4 py-3 border-b border-border/30 bg-secondary/30">
+        <h3 className="font-bold text-sm flex items-center gap-2">
+          <Scale className="w-4 h-4 text-amber" />
+          دنیای ما در برابر دنیای بدون دروغ (۲۰۲۶ میلادی)
+        </h3>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="border-b border-border/30">
+              <th className="text-right px-4 py-2.5 text-muted-foreground font-medium">حوزه</th>
+              <th className="text-right px-4 py-2.5 text-rose font-medium">دنیای ما</th>
+              <th className="text-right px-4 py-2.5 text-cyan font-medium">دنیای بدون دروغ</th>
+              <th className="text-center px-3 py-2.5 text-muted-foreground font-medium">برتری</th>
+            </tr>
+          </thead>
+          <tbody>
+            {COMPARISON_DATA.map((row, i) => (
+              <motion.tr
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.06 }}
+                className="border-b border-border/20 last:border-0 hover:bg-secondary/20 transition-colors"
+              >
+                <td className="px-4 py-2.5 font-medium flex items-center gap-1.5">
+                  <span className="text-muted-foreground">{row.icon}</span>
+                  {row.field}
+                </td>
+                <td className="px-4 py-2.5 text-foreground/70">{row.ours}</td>
+                <td className="px-4 py-2.5 text-foreground/70">{row.theirs}</td>
+                <td className="px-3 py-2.5 text-center">
+                  {row.advantage === 'ours' && (
+                    <Badge className="bg-rose/15 text-rose border-rose/30 text-[10px] px-1.5 py-0">ما</Badge>
+                  )}
+                  {row.advantage === 'them' && (
+                    <Badge className="bg-cyan/15 text-cyan border-cyan/30 text-[10px] px-1.5 py-0">بدون دروغ</Badge>
+                  )}
+                  {row.advantage === 'neutral' && (
+                    <Badge className="bg-secondary text-muted-foreground border-border/50 text-[10px] px-1.5 py-0">مساوی</Badge>
+                  )}
+                </td>
+              </motion.tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+// ─── Deep Dive: Plot Twist Section ─────────────────────
+function PlotTwistSection() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4 }}
+      className="rounded-xl border border-amber/20 bg-gradient-to-br from-amber/5 to-transparent overflow-hidden"
+    >
+      <div className="p-4 md:p-6 space-y-4">
+        <div className="flex items-center gap-2">
+          <Brain className="w-5 h-5 text-amber" />
+          <div>
+            <h3 className="font-bold text-base">{PLOT_TWIST.title}</h3>
+            <p className="text-[10px] text-muted-foreground font-mono">{PLOT_TWIST.titleEn}</p>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed text-foreground/90">{PLOT_TWIST.text}</p>
+        <div className="relative p-4 rounded-lg border border-amber/20 bg-amber/5">
+          <div className="absolute top-2 left-2 text-amber/30 text-3xl font-serif">&ldquo;</div>
+          <p className="text-sm text-amber font-medium italic leading-relaxed pl-4">
+            {PLOT_TWIST.punchline}
+          </p>
+        </div>
+        <div className="flex items-center gap-2 pt-2">
+          <Rocket className="w-3.5 h-3.5 text-emerald" />
+          <p className="text-xs text-muted-foreground">
+            پیشرفت فنی بیشتر + رفاه روانی کمتر = پارادوکس تمدن بدون دروغ
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Deep Dive: Full View ──────────────────────────────
+function DeepDiveView({
+  onBack,
+  onSimulate,
+}: {
+  onBack: () => void;
+  onSimulate: () => void;
+}) {
+  const [activeDimension, setActiveDimension] = useState<string | null>(null);
+  const [showComparison, setShowComparison] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="w-full max-w-3xl mx-auto space-y-6"
+    >
+      {/* Header */}
+      <div className="text-center mb-2">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber/30 bg-amber/10 text-amber text-sm mb-4"
+        >
+          <Sparkles className="w-3.5 h-3.5" />
+          Featured Scenario
+        </motion.div>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
+          پارادوکس{' '}
+          <span className="text-amber">بدون دروغ</span>
+        </h2>
+        <p className="text-muted-foreground text-sm max-w-lg mx-auto leading-relaxed">
+          اگر در سال ۱۰۲۶ میلادی، مفهوم «دروغ» به طور کامل از زیست‌شناسی انسان حذف می‌شد،
+          تاریخ ۱۰۰۰ ساله بعدی چگونه بازنویسی می‌شد؟
+        </p>
+      </div>
+
+      {/* Branching Indicator */}
+      <div className="relative">
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl border border-amber/20 bg-amber/5">
+          <div className="relative">
+            <div className="w-3 h-3 rounded-full bg-emerald" />
+            <div className="absolute inset-0 w-3 h-3 rounded-full bg-emerald animate-ripple" />
+          </div>
+          <div className="flex-1">
+            <div className="h-px bg-gradient-to-r from-emerald via-cyan to-amber" />
+          </div>
+          <div className="text-xs text-muted-foreground">دنیای ما</div>
+          <ChevronRight className="w-4 h-4 text-amber" />
+          <div className="text-xs text-amber font-medium">بدون دروغ</div>
+          <div className="w-3 h-3 rounded-full bg-amber" />
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <div className="grid grid-cols-3 gap-3">
+        {[
+          { label: '۶ بعد', sublabel: 'تحلیل شده', value: '۶', color: 'text-amber' },
+          { label: '۵۰۰ سال', sublabel: 'زودتر به عصر روشن', value: '۵۰۰', color: 'text-cyan' },
+          { label: '۸ حوزه', sublabel: 'مقایسه شده', value: '۸', color: 'text-emerald' },
+        ].map((stat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="text-center p-3 rounded-xl border border-border/30 bg-card/30"
+          >
+            <p className={`text-2xl font-black ${stat.color}`}>{stat.value}</p>
+            <p className="text-xs font-medium mt-0.5">{stat.label}</p>
+            <p className="text-[10px] text-muted-foreground">{stat.sublabel}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 6 Dimensions Grid */}
+      <div className="space-y-2">
+        <p className="text-xs text-muted-foreground px-1 flex items-center gap-1.5">
+          <ArrowDown className="w-3 h-3" />
+          برای جزئیات بیشتر روی هر بعد کلیک کنید
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {DIMENSIONS.map((dim, i) => (
+            <DimensionCard
+              key={dim.id}
+              dimension={dim}
+              index={i}
+              isActive={activeDimension === dim.id}
+              onClick={() =>
+                setActiveDimension(activeDimension === dim.id ? null : dim.id)
+              }
+            />
+          ))}
+        </div>
+        <AnimatePresence>
+          {activeDimension && (
+            <ExpandedDimension
+              dimension={DIMENSIONS.find((d) => d.id === activeDimension)!}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Comparison Toggle */}
+      <div className="space-y-3">
+        <button
+          onClick={() => setShowComparison(!showComparison)}
+          className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-border/50 bg-card/30 hover:border-amber/30 transition-all"
+        >
+          <span className="flex items-center gap-2 text-sm font-medium">
+            <Scale className="w-4 h-4 text-amber" />
+            جدول مقایسه: دنیای ما vs. دنیای بدون دروغ
+          </span>
+          <motion.div
+            animate={{ rotate: showComparison ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
+          </motion.div>
+        </button>
+        <AnimatePresence>
+          {showComparison && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+            >
+              <ComparisonTable />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Plot Twist */}
+      <PlotTwistSection />
+
+      {/* Actions */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+        <Button
+          onClick={onBack}
+          variant="outline"
+          className="gap-2 w-full sm:w-auto border-border/50"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          بازگشت
+        </Button>
+        <Button
+          onClick={onSimulate}
+          className="bg-amber hover:bg-amber-dark text-black font-bold px-6 py-5 gap-2 shadow-lg shadow-amber/20 w-full sm:w-auto"
+        >
+          <Rocket className="w-4 h-4" />
+          شبیه‌سازی با هوش مصنوعی
+        </Button>
+      </div>
+    </motion.div>
+  );
+}
+
 // ─── Hero Section ──────────────────────────────────────
-function HeroSection({ onStart }: { onStart: () => void }) {
+function HeroSection({ onStart, onExplore }: { onStart: () => void; onExplore: () => void }) {
+  const featured = SCENARIOS.find(s => 'featured' in s && s.featured);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -863,6 +1403,42 @@ function HeroSection({ onStart }: { onStart: () => void }) {
           Start Simulation
         </Button>
       </motion.div>
+
+      {/* Featured Scenario Card */}
+      {featured && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          onClick={onExplore}
+          className="cursor-pointer group"
+        >
+          <div className="relative mx-auto max-w-lg rounded-xl border-2 border-amber/20 bg-gradient-to-br from-amber/5 via-card/50 to-cyan/5 p-5 hover:border-amber/40 transition-all hover:shadow-lg hover:shadow-amber/10">
+            <div className="absolute -top-2.5 left-4">
+              <Badge className="bg-amber text-black font-bold px-3 py-0.5 text-[10px]">
+                Featured Scenario
+              </Badge>
+            </div>
+            <div className="flex items-start gap-4 mt-2">
+              <div className="shrink-0 p-3 rounded-xl bg-amber/10 text-amber">
+                <Brain className="w-6 h-6" />
+              </div>
+              <div className="flex-1 text-right">
+                <h3 className="font-bold text-base mb-1 group-hover:text-amber transition-colors">
+                  {featured.tag}: حذف کامل مفهوم دروغ
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  اگر در سال ۱۰۲۶ میلادی، انسان‌ها قصد فریب نداشتند — ۶ بعد تحلیلی + جدول مقایسه + شبیه‌سازی AI
+                </p>
+                <div className="flex items-center gap-2 mt-3 text-amber/70 group-hover:text-amber transition-colors">
+                  <span className="text-xs font-medium">کاوش کنید</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
         <Badge variant="outline" className="border-border/50 text-muted-foreground gap-1.5 px-3 py-1">
@@ -949,6 +1525,21 @@ export default function Home() {
     setError(null);
   }, []);
 
+  const handleExplore = useCallback(() => {
+    const featured = SCENARIOS.find(s => 'featured' in s && s.featured);
+    if (featured) {
+      setEra(featured.era);
+      setLocation(featured.location);
+      setChange(featured.change);
+      setMagnitude(featured.magnitude);
+    }
+    setStep('explore');
+  }, []);
+
+  const handleExploreSimulate = useCallback(() => {
+    setStep('magnitude');
+  }, [era, location, change, magnitude]);
+
   const handleSimulate = useCallback(async () => {
     setStep('simulate');
     setError(null);
@@ -1028,7 +1619,14 @@ export default function Home() {
         )}
 
         <AnimatePresence mode="wait">
-          {step === 'idle' && <HeroSection onStart={() => setStep('ripple')} />}
+          {step === 'idle' && <HeroSection onStart={() => setStep('ripple')} onExplore={handleExplore} />}
+
+          {step === 'explore' && (
+            <DeepDiveView
+              onBack={handleReset}
+              onSimulate={handleExploreSimulate}
+            />
+          )}
 
           {step === 'ripple' && (
             <RippleStep

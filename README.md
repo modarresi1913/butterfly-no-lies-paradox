@@ -1,56 +1,77 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0a0a0f&height=180&section=header&text=The%20Butterfly%20Effect%3A%20No-Lies%20Paradox&fontSize=36&fontColor=f59e0b&animation=twinkling&fontAlignY=32&desc=AI-Powered%20Alternate%20History%20Simulator%20%E2%80%94%20%D9%BE%D8%A7%D8%B1%D8%A7%D8%AF%D9%88%DA%A9%DD%A1%20%D8%A8%D8%AF%D9%88%D9%86%20%D8%AF%D8%B1%D9%88%D8%BA&descSize=16&descColor=94a3b8" alt="banner" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0a0a0f&height=180&section=header&text=Butterfly%20Effect%3A%20No-Lies%20Paradox&fontSize=36&fontColor=f59e0b&animation=twinkling&fontAlignY=32&desc=AI-Powered%20Alternate%20History%20Simulator%20%E2%80%94%20Chaos%20Theory%20%C3%97%20Counterfactual%20Thinking&descSize=16&descColor=94a3b8" alt="banner" />
 
 <p>
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js" alt="Next.js" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Framer_Motion-11-FF0055?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Framer_Motion-12-FF0055?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
   <img src="https://img.shields.io/badge/shadcn/ui-latest-18181B?style=flat-square" alt="shadcn/ui" />
   <img src="https://img.shields.io/badge/License-MIT-238636?style=flat-square" alt="License" />
 </p>
 
 <p>
-  <a href="https://github.com/modarresi1913/the-butterfly-effect/issues?q=is%3Aissue+is%3Aopen+label%3Abug"><img src="https://img.shields.io/github/issues/modarresi1913/the-butterfly-effect?style=flat-square&label=issues" alt="Issues" /></a>
-  <a href="https://github.com/modarresi1913/the-butterfly-effect/stargazers"><img src="https://img.shields.io/github/stars/modarresi1913/the-butterfly-effect?style=flat-square&label=stars" alt="Stars" /></a>
-  <a href="https://github.com/modarresi1913/the-butterfly-effect/network/members"><img src="https://img.shields.io/github/forks/modarresi1913/the-butterfly-effect?style=flat-square&label=forks" alt="Forks" /></a>
+  <img src="https://img.shields.io/github/stars/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="Stars" />
+  <img src="https://img.shields.io/github/forks/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="Forks" />
+  <img src="https://img.shields.io/github/issues/modarresi1913/butterfly-no-lies-paradox?style=flat-square" alt="Issues" />
+  <img src="https://img.shields.io/badge/forked%20from-the_butterfly_effect-amber?style=flat-square" alt="Forked from" />
 </p>
 
 <p>
-  <b>What if a single flutter changed the course of history?</b><br/>
-  <i>Pick a moment. Change it. Watch 1,000 years unfold.</i>
+  <b>What if a single butterfly flap rewrote a thousand years of history?</b><br/>
+  <i>Pick a moment. Change one variable. Watch the cascade unfold.</i>
 </p>
-
-<p>
-  <b>Featured: پارادوکس بدون دروغ — The No-Lies Paradox</b><br/>
-  <i>What if the concept of lying was biologically removed from humans in 1026 AD? How would 1000 years of history be rewritten?</i>
-</p>
-
-<a href="https://butterfly0.space-z.ai/">
-  <img src="https://img.shields.io/badge/Live_Demo-butterfly0.space--z.ai-f59e0b?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xOCAxM2g2YTggOCAwIDAgMSAwIDE2SDZBOCA4IDAgMCAxIDYgMTNoNiI+PC9wYXRoPjxwYXRoIGQ9Ik0xNSAzaDYiIGRhdGEtbG9ja2VkPSJ0cnVlIj48L3BhdGg+PC9zdmc+&logoColor=black" alt="Live Demo" />
-</a>
 
 </div>
 
 ---
 
-## About
+## Overview
 
-> "Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?" 
+> "Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?"
 > — <i>Edward Lorenz, 1972</i>
 
-**The Butterfly Effect** is an interactive web application that merges **Chaos Theory**, **Alternative History**, and **Generative AI** into a cinematic experience. Users choose a historical turning point, and the AI engine simulates how that tiny change ripples across centuries — generating unique timelines, world states, and concept art along the way.
+**Butterfly Effect: No-Lies Paradox** is a fork of [modarresi1913/the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect) — an interactive **alternate history simulator** powered by **generative AI**, **chaos theory**, and **counterfactual reasoning**.
 
-### Featured: The No-Lies Paradox (پارادوکس بدون دروغ)
+Users choose a historical turning point, set its magnitude, and the AI engine simulates how that tiny change ripples across centuries — generating unique **timelines**, **world states**, and **concept art** along the way.
 
-This fork adds a **deep-dive interactive analysis** of a single thought experiment: *What if the concept of lying was biologically removed from humans in 1026 AD?*
+### What This Fork Adds
 
-- **6 interactive dimensions**: Political Collapse, Scientific Explosion, Religious Crisis, Credit Economy Collapse, Art & Literature, Transparent Colonialism
-- **Comparison table**: Our World vs. World Without Lies across 8 domains
-- **The Plot Twist**: Why removing deception creates a technologically advanced but psychologically brutal civilization
-- All content in **Persian (Farsi)** with English labels
-- One-click AI simulation of the scenario
+This fork introduces a **featured deep-dive scenario** — *The No-Lies Paradox* — a systematic exploration of what happens when the concept of lying is biologically removed from the human brain in 1026 AD:
+
+- **6 interactive dimensions** — Politics, Science, Religion, Economy, Art, Geopolitics
+- **Comparison engine** — Our World vs. World Without Lies across 8 measurable domains
+- **The Plot Twist** — Why a deception-free civilization reaches Mars faster but suffers 35% depression rates
+- One-click **AI simulation** that generates a full alternate timeline from the scenario
+
+---
+
+## The No-Lies Paradox: 6 Dimensions
+
+| # | Dimension | Core Question |
+|---|-----------|---------------|
+| 1 | **Political Collapse** | What happens to feudalism when kings can't claim divine right? |
+| 2 | **Scientific Explosion** | Could the Industrial Revolution arrive in the 13th century? |
+| 3 | **Religious Crisis** | Do religions survive when priests can't claim absolute truth? |
+| 4 | **Economy Without Credit** | Can civilization thrive without financial deception? |
+| 5 | **Art Without Pretense** | Is literature possible when hypocrisy is biologically impossible? |
+| 6 | **Transparent Colonialism** | What if conquerors must say "we come for your gold"? |
+
+### Comparison: Our World vs. No-Lies World (2026 AD)
+
+| Domain | Our World | No-Lies World | Who Wins? |
+|--------|-----------|---------------|-----------|
+| Science & Tech | AI, CRISPR, Internet | Mars colonisation, 150yr lifespan | No-Lies |
+| Politics | Inefficient democracy, propaganda | Technical management systems | No-Lies |
+| Art & Literature | Novels, cinema, humor | Poetry, documentary, abstract music | Ours |
+| War & Conflict | Proxy wars, terrorism | Rare but devastating wars | Tie |
+| Economy | Bubbles, recurring crises | Stable barter-based system | Tie |
+| Mental Health | ~20% depression | ~35% depression (ruthless truth) | Ours |
+| Religion | Institutional, holy wars | Personal mysticism, ethics | No-Lies |
+| Love & Relationships | Romantic, idealized | Stable but passionless | Ours |
+
+> **The Punchline:** *We reached the Moon a thousand years earlier — but during the journey, the astronauts kept telling each other: your body odor is truly horrific.*
 
 ---
 
@@ -60,40 +81,46 @@ This fork adds a **deep-dive interactive analysis** of a single thought experime
 <tr>
 <td width="50%">
 
-### 🎯 3-Step Wizard
-Simple, guided flow:
-1. **The Ripple** — Choose an era, location, and a small change
-2. **The Magnitude** — Set how widely the change spreads (Secret / Limited / Public)
-3. **The Time Leap** — Watch AI generate the alternate timeline
+### 3-Step Simulation Wizard
+1. **The Ripple** — Choose era, location, and change
+2. **The Magnitude** — Secret / Limited / Public
+3. **The Time Leap** — AI generates the alternate timeline
+
+Pre-built scenarios include:
+- No-Lies Paradox (1026 AD)
+- Printing Press by Cyrus the Great (500 BC)
+- Ancient Egyptian Batteries (1200 BC)
+- Aristotle Discovers Atomic Energy (330 BC)
 
 </td>
 <td width="50%">
 
-### 🧠 No-Lies Deep Dive (NEW)
-- **6 expandable dimension cards** with key points & alternate-world quotes
-- **Interactive comparison table** — Our World vs. World Without Lies (8 domains)
-- **Plot Twist section** with the famous astronaut punchline
-- Full **Persian (Farsi)** content with RTL support
-- One-click **AI simulation** of the No-Lies scenario
+### No-Lies Deep Dive
+- **6 expandable dimension cards** with key points
+- **Alternate-world quotes** ("These tulips are just bulbs" — Dutch merchant)
+- **8-domain comparison table** with advantage indicators
+- **Plot Twist section** — the civilization paradox
+- **AI simulation button** — generate a full timeline from the scenario
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-### 🌐 Interactive Visualization
-- Animated branching timeline with Framer Motion
-- Expandable checkpoint cards with rich detail
-- Responsive design — works on mobile and desktop
+### AI Timeline Engine
+- LLM generates **4 branching checkpoints** spanning 800+ years
+- Each checkpoint: achievements, crises, world state, geography
+- **AI-generated concept art** for the final era
+- Smart retry + fallback for reliable responses
 
 </td>
 <td width="50%">
 
-### 🛡️ Battle-Tested Engineering
-- **Resilient JSON parser** — repairs truncated LLM responses
-- **Hydration-safe particles** — deterministic SSR (no `Math.random()`)
-- **Graceful degradation** — smart fallback checkpoints if AI fails
-- Request normalization — missing fields auto-filled
+### Engineering
+- **Resilient JSON parser** — repairs truncated LLM output
+- **Hydration-safe particles** — deterministic SSR
+- **Graceful degradation** — fallback checkpoints if AI fails
+- **Framer Motion** animations throughout
 
 </td>
 </tr>
@@ -104,61 +131,58 @@ Simple, guided flow:
 ## Quick Start
 
 ```bash
-git clone https://github.com/modarresi1913/the-butterfly-effect.git
-cd the-butterfly-effect
-npm install
+git clone https://github.com/modarresi1913/butterfly-no-lies-paradox.git
+cd butterfly-no-lies-paradox
+bun install
 cp .env.example .env.local
-npm run dev
+bun run dev
 ```
 
-Open **http://localhost:3000** — or try the live demo at **[butterfly0.space-z.ai](https://butterfly0.space-z.ai/)**
+Open **http://localhost:3000**
 
 <details>
-<summary><b>⚙️ Production Build</b></summary>
+<summary><b>Production Build</b></summary>
 
 ```bash
-npm run build
-npm start
+bun run build
+bun run start
 ```
 
 </details>
 
 <details>
-<summary><b>📦 Tech Stack Details</b></summary>
+<summary><b>Tech Stack</b></summary>
 
 | Layer | Technology | Role |
 |-------|-----------|------|
-| Framework | ![Next.js 16](https://img.shields.io/badge/Next.js-16-000?style=flat-square&logo=next.js) | App Router, SSR, API Routes |
-| Language | ![TypeScript 5](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white) | Type safety |
-| Styling | ![Tailwind CSS 4](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) | Utility-first CSS |
+| Framework | Next.js 16 | App Router, SSR, API Routes |
+| Language | TypeScript 5 | Type safety |
+| Styling | Tailwind CSS 4 | Utility-first CSS |
 | UI Kit | shadcn/ui | Accessible, composable components |
-| Animation | ![Framer Motion 11](https://img.shields.io/badge/Framer-11-FF0055?style=flat-square&logo=framer&logoColor=white) | Page transitions, timeline animation |
-| AI | z-ai-web-dev-sdk | LLM completions + image generation |
-| Icons | ![Lucide](https://img.shields.io/badge/Lucide-latest-F97316?style=flat-square&logo=lucide) | Consistent icon system |
+| Animation | Framer Motion 12 | Page transitions, timeline |
+| AI | z-ai-web-dev-sdk | LLM + image generation |
+| Icons | Lucide | Consistent icon system |
 
 </details>
 
 ---
 
-## How It Works
+## Architecture
 
 ```
-  ┌──────────────┐       ┌──────────────┐       ┌──────────────┐       ┌──────────────┐
-  │              │       │              │       │              │       │              │
-  │  THE RIPPLE  │──────▶│ THE MAGNITUDE│──────▶│ THE TIME LEAP│──────▶│  TIMELINE    │
-  │              │       │              │       │              │       │  RESULTS     │
-  │  Era         │       │  Secret      │       │  AI generates│       │              │
-  │  Location    │       │  Limited     │       │  4 epochs    │       │  Checkpoint 1│
-  │  Change      │       │  Public      │       │  + art       │       │  Checkpoint 2│
-  │              │       │              │       │              │       │  Checkpoint 3│
-  └──────────────┘       └──────────────┘       └──────────────┘       │  Checkpoint 4│
-                                                                          │  + AI Art   │
-                                                                          └──────────────┘
+  User Input          AI Engine              Output
+  ┌──────────┐       ┌──────────┐       ┌──────────────┐
+  │  Era     │       │          │       │ Checkpoint 1 │
+  │  Location │──────▶│   LLM    │──────▶│ Checkpoint 2 │
+  │  Change   │       │  + Image │       │ Checkpoint 3 │
+  │  Magnitude│       │   Gen    │       │ Checkpoint 4 │
+  └──────────┘       └──────────┘       │ + Concept Art│
+                                         └──────────────┘
+
+  Deep Dive (No-Lies)  ────▶  6 Dimensions  ────▶  Comparison Table  ────▶  AI Simulate
 ```
 
 ### Checkpoint Data Model
-
-Each AI-generated checkpoint contains:
 
 ```typescript
 interface Checkpoint {
@@ -177,21 +201,20 @@ interface Checkpoint {
 ## Project Structure
 
 ```
-the-butterfly-effect/
+butterfly-no-lies-paradox/
 ├── src/
 │   ├── app/
 │   │   ├── api/simulate/
-│   │   │   └── route.ts          # 🧠 AI simulation endpoint
-│   │   ├── globals.css            # 🎨 Dark sci-fi theme + animations
-│   │   ├── layout.tsx             # 📐 Root layout (LTR, metadata)
-│   │   └── page.tsx               # 🦋 Main app (wizard + timeline)
-│   └── components/
-│       └── ui/                    # shadcn/ui primitives
-├── .github/                       # CI, issue templates, PR template
-├── .env.example                   # Environment variables template
-├── CONTRIBUTING.md                # Contribution guidelines
+│   │   │   └── route.ts          # AI simulation endpoint (LLM + image gen)
+│   │   ├── globals.css            # Dark sci-fi theme + custom animations
+│   │   ├── layout.tsx             # Root layout + metadata
+│   │   └── page.tsx               # Main app: wizard + deep dive + timeline
+│   └── components/ui/             # shadcn/ui component library
+├── prisma/
+│   └── schema.prisma              # Database schema (SQLite)
 ├── LICENSE                        # MIT
-└── README.md                      # You are here 📍
+├── CONTRIBUTING.md                # Contribution guidelines
+└── README.md                      # You are here
 ```
 
 ---
@@ -199,14 +222,14 @@ the-butterfly-effect/
 ## Technical Deep Dives
 
 <details>
-<summary><b>🛡️ Resilient JSON Parsing</b></summary>
+<summary><b>Resilient JSON Parsing</b></summary>
 
-AI models frequently truncate their JSON output. This project implements a multi-layer repair strategy:
+AI models frequently truncate their JSON output. This project uses a multi-layer repair strategy:
 
 1. **Strip markdown fences** — Removes ```json ... ``` wrappers
-2. **Fix trailing commas** — Cleans `{a: 1,}` → `{a: 1}`
-3. **Detect unclosed strings** — Finds the last unclosed quote and removes the incomplete key-value pair
-4. **Auto-close brackets** — Counts open/close braces and appends missing closers
+2. **Fix trailing commas** — Cleans `{a: 1,}` to `{a: 1}`
+3. **Detect unclosed strings** — Finds the last unclosed quote, removes incomplete key-value pair
+4. **Auto-close brackets** — Counts open/close braces, appends missing closers
 5. **Validate structure** — Ensures all required fields exist before rendering
 
 This reduces LLM response failures from ~40% to near-zero.
@@ -214,54 +237,51 @@ This reduces LLM response failures from ~40% to near-zero.
 </details>
 
 <details>
-<summary><b>💧 Hydration-Safe Particle Field</b></summary>
+<summary><b>Hydration-Safe Particle Field</b></summary>
 
-Next.js SSR requires server and client markup to match. Using `Math.random()` in components causes hydration mismatches because the server generates different values than the client.
+Next.js SSR requires server and client markup to match. Using `Math.random()` causes hydration mismatches.
 
 **Solution:** Deterministic positioning via modular arithmetic:
 ```javascript
-// Instead of Math.random()
 const x = ((i * 37 + 13) % 97) * 1.03;
 const y = ((i * 53 + 7) % 89) * 1.14;
 ```
-This produces visually random-looking distributions that are identical on server and client.
+Produces visually random distributions that are identical on server and client.
 
 </details>
 
 <details>
-<summary><b>🔄 Smart Retry + Fallback</b></summary>
+<summary><b>Smart Retry + Fallback</b></summary>
 
 ```
-Attempt 1: LLM call → parse → validate  ✅/❌
-Attempt 2: LLM call → parse → validate  ✅/❌
-Fallback:  Hand-crafted checkpoints    ✅
+Attempt 1: LLM call -> parse -> validate  [pass/fail]
+Attempt 2: LLM call -> parse -> validate  [pass/fail]
+Fallback:  Hand-crafted checkpoints     [always pass]
 ```
 
-The system makes 2 attempts with the LLM. If both fail (truncation, invalid format, timeout), it falls back to pre-written thematic checkpoints so the user **always** gets a result.
+2 LLM attempts with automatic fallback to pre-written thematic checkpoints. Users always get a result.
 
 </details>
 
 ---
 
-## Roadmap
+## Keywords
 
-- [ ] Shareable timeline links
-- [ ] Multiple branching paths (user chooses at each checkpoint)
-- [ ] Historical comparison mode (real vs. alternate)
-- [ ] Export as PDF / image
-- [ ] Community timeline gallery
-- [ ] Mobile app (React Native)
+`alternate-history` `butterfly-effect` `chaos-theory` `counterfactual` `ai-simulator` `what-if-scenario` `no-lies-paradox` `alternate-timeline` `generative-ai` `nextjs` `shadcn-ui` `framer-motion` `thought-experiment` `historical-simulation` `worldbuilding`
 
 ---
 
-## Contributing
+## Acknowledgments
 
-Contributions, issues, and feature requests are welcome!
+- **Original project:** [modarresi1913/the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect) — the AI-powered alternate history simulator this fork builds upon
+- **Edward Lorenz** — for the chaos theory that inspired it all
+- **z-ai-web-dev-sdk** — AI inference engine powering the simulations
 
-1. Read [CONTRIBUTING.md](CONTRIBUTING.md)
-2. Fork the repository
-3. Create a feature branch
-4. Open a Pull Request
+---
+
+## License
+
+[MIT](LICENSE) — forked from [the-butterfly-effect](https://github.com/modarresi1913/the-butterfly-effect) under the same license.
 
 ---
 
@@ -271,8 +291,8 @@ Contributions, issues, and feature requests are welcome!
 
 <br/>
 
-<b>Built with 🦋 by <a href="https://github.com/modarresi1913">modarresi1913</a></b>
+<b>Forked with thought-experiment love from <a href="https://github.com/modarresi1913/the-butterfly-effect">the-butterfly-effect</a></b>
 <br/>
-<sub>If you like this project, consider giving it a ⭐!</sub>
+<sub>If you enjoy alternate history & what-if scenarios, consider giving this fork a star!</sub>
 
 </div>
